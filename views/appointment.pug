@@ -1,0 +1,188 @@
+extends ./layout.pug
+block title
+  title Appointment
+
+block headComplement
+  link(rel="stylesheet", href="/css1/appointment.css", type="text/css")
+
+block mainContent
+ #hall_show.wrap
+  .show_title
+    h1
+      span
+      | appointment
+  |         
+  p
+    | Here you can make,modify and cancell your appointment. Please confirm with the norms of individual
+    a(href="/ClinicInfo", style="color:chocolate") clinic
+    | .
+    |             
+    br
+    | For any questions about use, please
+    |             
+    a(href="/contactus", style="color: peru") Contact US.
+  |     
+  .entry-container-inner
+    form#new_entry.center.with-shadow.indent-on-large-phone(data-form-token="HMEJIT", data-validate-url="/f/HMEJIT/field_validations", action="HMEJIT.htm", accept-charset="UTF-8", method="post")
+      input(name="utf8", type="hidden", value="✓")
+      |             
+      input(type="hidden", name="authenticity_token", value="ggTUHdvBJXexaxxGDEbHcTuLztRnsp9Sy0nnzIGECjz3GiYORpmQWuFKA7LJhfnVsFwhl3cjWRISEuMwYCOY4Q==")
+      |             
+      .form-header
+        .container-fluid
+          .row
+            h1.form-title.col-md-12.font-family-heiti
+              | Appointment Form
+            |                         
+            .form-description.col-md-12
+      |             
+      .form-content.container-fluid
+        .row
+          .fields.clearfix
+            .field.field-text-field.col-sm-12.required(data-api-code="field_1", data-type="TextField", data-label="姓名", data-validations='["Presence"]')
+              .form-group
+                .field-label-container(onclick="")
+                  label.field-label.font-family-heiti(for="entry_field_1")
+                    | Full Name
+                |                                 
+                .field-content
+                  input#entry_field_1(type="text", value="", name="entry[field_1]")
+            |                         
+            .field.field-radio-button.col-sm-12.required(data-api-code="field_2", data-type="RadioButton", data-label="性别", data-validations='["Presence"]')
+              .form-group
+                .field-label-container(onclick="")
+                  label.field-label.font-family-heiti(for="entry_field_2")
+                    | Gender
+                |                                 
+                .field-content
+                  .choices.font-family-heiti
+                    label.radio.inline(onclick="")
+                      input.needsclick(type="radio", value="XU9w", name="entry[field_2]")
+                      |  Male
+                    |                                         
+                    label.radio.inline(onclick="")
+                      input.needsclick(type="radio", value="r9jx", name="entry[field_2]")
+                      |  Female
+            |                         
+            .field.field-text-field.col-sm-12.required(data-api-code="field_3", data-type="TextField", data-label="健康卡", data-validations='["Presence"]')
+              .form-group
+                .field-label-container(onclick="")
+                  label.field-label.font-family-heiti(for="Healthcard")
+                    | Healthcard Number
+                |                             
+                .field-content
+                  input#Healthcard(type="text", name="")
+              |                         
+              .field.field-text-field.col-sm-12.required(data-api-code="field_3", data-type="TextField", data-label="联系人", data-validations='["Presence"]')
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_3")
+                      | Contact Number
+                  |                                 
+                  .field-content
+                    input(type="tel", name="", id="")
+              |                         
+              .field.field-mobile-field.col-sm-12.required(data-api-code="field_4", data-type="MobileField", data-label="手机", data-validations='["Presence","Format","VerificationTokenPresence"]')
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_4")
+                      | Email
+                  |                                 
+                  .field-content
+                    div(data-role="verification_sender")
+                      input#entry_field_4(type="email", name="")
+              |                         
+              .field.field-radio-button.col-sm-12(data-api-code="field_5", data-type="RadioButton", data-label="目标城市", data-validations="[]")
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_5")
+                      | Suburban
+                  |                                 
+                  .field-content
+                    .choices.font-family-heiti
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="YoKP", name="entry[field_5]")
+                        |                                           Lakeridge
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="PT87", name="entry[field_5]")
+                        |                                              Lakewood
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="1brp", name="entry[field_5]")
+                        |                                             Rosewood
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="Aa69", name="entry[field_5]")
+                        |                                             Lakeview
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="jTlK", name="entry[field_5]")
+                        |                                              Wildwood
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="ZZTg", name="entry[field_5]")
+                        |                                              Stonebridge
+                      |                                         
+                      label.radio.inline(onclick="")
+                        input.needsclick(type="radio", value="v7Vq", name="entry[field_5]")
+                        |                                                 College Park
+              |                         
+              .field.field-text-field.col-sm-12(data-api-code="field_6", data-type="TextField", data-label="目标医院", data-validations="[]")
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_6")
+                      | Clinic
+                  |                                 
+                  .field-content
+                    input(list="clinics")
+                    |                                     
+                    datalist#clinics
+                      option(value="Clinic1")
+                      option(value="Clinic2")
+                      option(value="Clinic3")
+              |                         
+              .field.field-text-field.col-sm-12(data-api-code="field_7", data-type="TextField", data-label="目标科室", data-validations="[]")
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_7")
+                      | Physician
+                  |                                 
+                  .field-content
+                    .field-content
+                      input(list="Physicians")
+                      |                                             
+                      datalist#Physicians
+                        option(value="physician1")
+                        option(value="physician2")
+                        option(value="physician3")
+              |                         
+              .field.field-text-field.col-sm-12(data-api-code="field_8", data-type="TextField", data-label="目标医生", data-validations="[]")
+                .form-group
+                  .field-label-container(onclick="")
+                    label.field-label.font-family-heiti(for="entry_field_8")
+                      | Date
+                    |                                     
+                    label.field-label(style="margin-left:140px", for="choseTime") time
+                  |                                 
+                  .field-content
+                    input#entry_field_8(type="date", value="", name="entry[field_8]")
+                    |                                     
+                    input#choseTime(type="time", name="")
+            |                     
+            .field.submit-field.col-md-12.text-center.clearfix
+              input.submit.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="submit", name="commit", value="Submit", data-disable-with="In process...")
+              |                         
+              input.submit.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="submit", name="clear", value="Clear", data-disable-with="In process...")
+              |                         
+              span.page-number.text-muted
+              |                         
+              a.report-form-link.gd-form-control-line-height(target="_blank", href="help.html") Help
+              |                         
+              input#embedded(type="hidden", name="embedded")
+              |                         
+              input#banner(type="hidden", name="banner")
+              |                         
+              input#header(type="hidden", name="header")
+              |                         
+              input#background(type="hidden", name="background")

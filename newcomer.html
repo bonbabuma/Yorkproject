@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script lang="javascript">
+
+function openwin(){
+let OpenWindow=window.open("","newwin", "height=250,width=250,toolbar=no,scrollbars="+scroll+",menubar=no");
+//写成一行 一直报错。说openwin()未定义。但只要将这些代码替换为alert(''),就是正常的。
+
+OpenWindow.document.write("<TITLE>例子</TITLE>");
+
+OpenWindow.document.write("<BODYBGCOLOR=#ffffff>");
+
+OpenWindow.document.write("<h1>Hello!</h1>");
+
+OpenWindow.document.write("New windowopened!");
+
+OpenWindow.document.write("</BODY>");
+
+OpenWindow.document.write("</HTML>");
+
+OpenWindow.document.close();}
+</script>
+
+</head>
+
+<body>
+
+<a href="#" onclick=openwin()>打开一个窗口</a>
+
+<input type="button" onclick="openwin()" value="打开窗口">
+
+</body>
+
+</html>
+

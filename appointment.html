@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <title>Appointment</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css1/index.css" type="text/css" />
+    <link rel="stylesheet" href="css1/appointment.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
+    <!--  <link rel="stylesheet" href="css1/common.css" type="text/css" />  
+    <link rel="stylesheet" href="css1/inside.css" type="text/css" />-->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src='js1/index.js'></script>
+    <script language="javascript" type="text/javascript" src="js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/Kunyilibrary.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="topHidden"></div>
+        <div class="toolBase" style="top: 0px;">
+            <div class="BaseMark">
+                <ul>
+                    <li class="first">
+                        <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <li>
+                        <a href="Office-71.html">Personnel</a>
+                    </li>
+                    <li>
+                        <a href="Message.html">Messages</a>
+                    </li>
+                    <li>
+                        <a href="Message.html">Help</a>
+                    </li>
+                    <li>
+                        <a href="about.html" target="_blank">About us</a>
+                    </li>
+                    <div class="language">Select Language</div>
+                    <div class="langBtn animated">
+                        <i class="flag"></i>ENG
+                        <i class="downBtn"></i>
+                        <a href="javasript:;">
+                            <img src="images/ico_003.png" class="animated" width="13" height="13">中文</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="logoBase">
+            <br>
+            <br>
+            <br>
+            <a href="Index.html" style="font-size:40px; font-weight: 700;font-style:italic;color:rgba(206, 28, 230, 0.788) ;text-shadow:2px 2px 5px gray;">
+                &nbsp;&nbsp;&nbsp;Family Physicians of Saskatoon
+            </a>
+            <div class="searchBase">
+                <div class="itemBase">
+                    <div class="divType" data-state="0">Whole Site</div>
+                    <ul>
+                        <li data-id="1">Whole Site</li>
+                        <li data-id="2">Search Phsician</li>
+                        <li data-id="3">新闻动态</li>
+                    </ul>
+                </div>
+                <form method="get" action="Search.html" onsubmit="return Kunyi.CheckSearchForm()">
+                    <input type="hidden" id="Type" name="Type" value="1">
+                    <input type="text" name="SearchWords" placeholder="Please input keywords" value="" autocomplete="off" onfocus="Kunyi.cls(event)"
+                        onblur="Kunyi.res(event)" maxlength="28" id="SearchWords">
+                    <input type="submit" value="Search" class="boxsub animated">
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="empty-placeholder hidden"></div>
+    <div id="subNav" class="">
+        <ul class="wrap">
+            <li class="adv_active">
+                <a href="index.html " class="adv_door">
+                    <ins></ins>Physician List
+                    <span></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointment.html" class="adv_source">
+                    <ins></ins>Appointment
+                    <span></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="ClinicInfo.html" class="adv_price">
+                    <ins></ins>Clinic Information
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="comments.html" class="adv_transfer">
+                    <ins></ins>Comments and rating
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=The%20Complaints%20Process%20Overview" class="adv_payment"
+                    target="_blank">
+                    <ins></ins>Complaints
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="Newcomer.html" class="adv_promise">
+                    <ins></ins>NewComer's Manual
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="hall_show" class="wrap">
+        <div class="show_title">
+            <h1>
+                <span></span>appointment</h1>
+        </div>
+        <p>Here you can make,modify and cancell your appointment. Please confirm with the norms of individual
+            <a href='ClinicInfo.html' style='color:chocolate'>clinic</a>.
+            <br>For any questions about use, please
+            <a href='contactus.html' style='color: peru'>Contact US.</a>
+        </p>
+
+
+        <div class="entry-container-inner">
+
+            <form class="center with-shadow indent-on-large-phone" id="new_entry" data-form-token="HMEJIT" data-validate-url="/f/HMEJIT/field_validations"
+                action="HMEJIT.htm" accept-charset="UTF-8" method="post">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                <input type="hidden" name="authenticity_token" value="ggTUHdvBJXexaxxGDEbHcTuLztRnsp9Sy0nnzIGECjz3GiYORpmQWuFKA7LJhfnVsFwhl3cjWRISEuMwYCOY4Q=="
+                />
+                <div class="form-header">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h1 class="form-title col-md-12 font-family-heiti">
+                                Appointment Form
+                            </h1>
+                            <div class="form-description col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-content container-fluid">
+                    <div class="row">
+
+                        <div class="fields clearfix">
+                            <div class="field field-text-field col-sm-12 required" data-api-code="field_1" data-type="TextField" data-label="姓名" data-validations="[&quot;Presence&quot;]">
+                                <div class="form-group">
+                                    <div class="field-label-container" onclick="">
+                                        <label class="field-label font-family-heiti" for="entry_field_1">
+                                            Full Name
+                                        </label>
+                                    </div>
+                                    <div class="field-content">
+                                        <input type="text" value="fullname" name="entry[field_1]" id="entry_field_1" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="field field-radio-button col-sm-12 required" data-api-code="field_2" data-type="RadioButton" data-label="性别"
+                                data-validations="[&quot;Presence&quot;]">
+                                <div class="form-group">
+                                    <div class="field-label-container" onclick="">
+                                        <label class="field-label font-family-heiti" for="entry_field_2">
+                                            Gender
+                                        </label>
+                                    </div>
+
+                                    <div class="field-content">
+
+                                        <div class="choices font-family-heiti">
+                                            <label onclick="" class="radio inline">
+                                                <input class="needsclick" type="radio" value="XU9w" name="entry[field_2]" /> Male
+                                            </label>
+                                            <label onclick="" class="radio inline">
+                                                <input class="needsclick" type="radio" value="r9jx" name="entry[field_2]" /> Female
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="field field-text-field col-sm-12 required" data-api-code="field_3" data-type="TextField" data-label="健康卡" data-validations="[&quot;Presence&quot;]">
+                                <div class="form-group">
+                                    <div class="field-label-container" onclick="">
+                                        <label class="field-label font-family-heiti" for="Healthcard">
+                                            Healthcard Number
+                                        </label>
+                                    </div>
+                                    <div class="field-content">
+                                        <input type="text" name="" id="Healthcard">
+                                    </div>
+                                </div>
+
+                                <div class="field field-text-field col-sm-12 required" data-api-code="field_3" data-type="TextField" data-label="联系人" data-validations="[&quot;Presence&quot;]">
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_3">
+                                                Contact Number
+                                            </label>
+                                        </div>
+                                        <div class="field-content">
+                                            <input type="tel" name="" id="">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="field field-mobile-field col-sm-12 required" data-api-code="field_4" data-type="MobileField" data-label="手机"
+                                    data-validations="[&quot;Presence&quot;,&quot;Format&quot;,&quot;VerificationTokenPresence&quot;]">
+
+
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_4">
+                                                Email
+                                            </label>
+                                        </div>
+                                        <div class="field-content">
+                                            <div data-role='verification_sender'>
+                                                <input type="email" name="" id="entry_field_4">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="field field-radio-button col-sm-12" data-api-code="field_5" data-type="RadioButton" data-label="目标城市" data-validations="[]">
+
+
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_5">
+                                                Suburban
+                                            </label>
+                                        </div>
+                                        <div class="field-content">
+
+                                            <div class="choices font-family-heiti">
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="YoKP" name="entry[field_5]" /> Lakeridge
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="PT87" name="entry[field_5]" /> Lakewood
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="1brp" name="entry[field_5]" /> Rosewood
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="Aa69" name="entry[field_5]" /> Lakeview
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="jTlK" name="entry[field_5]" /> Wildwood
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="ZZTg" name="entry[field_5]" /> Stonebridge
+                                                </label>
+                                                <label onclick="" class="radio inline">
+                                                    <input class="needsclick" type="radio" value="v7Vq" name="entry[field_5]" /> College Park
+                                                </label>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="field field-text-field col-sm-12" data-api-code="field_6" data-type="TextField" data-label="目标医院" data-validations="[]">
+
+
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_6">
+                                                Clinic
+                                            </label>
+                                        </div>
+                                        <div class="field-content">
+                                            <input list="clinics" />
+                                            <datalist id="clinics">
+                                                <option value="Clinic1">
+                                                    <option value="Clinic2">
+                                                        <option value="Clinic3">
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="field field-text-field col-sm-12" data-api-code="field_7" data-type="TextField" data-label="目标科室" data-validations="[]">
+
+
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_7">
+                                                Physician
+                                            </label>
+                                        </div>
+                                        <div class="field-content">
+                                            <div class="field-content">
+                                                <input list="Physicians" />
+                                                <datalist id="Physicians">
+                                                    <option value="physician1">
+                                                        <option value="physician2">
+                                                            <option value="physician3">
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="field field-text-field col-sm-12" data-api-code="field_8" data-type="TextField" data-label="目标医生" data-validations="[]">
+
+                                    <div class="form-group">
+                                        <div class="field-label-container" onclick="">
+                                            <label class="field-label font-family-heiti" for="entry_field_8">
+                                                Date
+                                            </label>
+                                            <label style='margin-left:140px' class="field-label" for="choseTime">time</label>
+                                        </div>
+                                        <div class="field-content">
+                                            <input type="date" value="" name="entry[field_8]" id="entry_field_8" />
+                                            <input type="time" name="" id="choseTime">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="field submit-field col-md-12 text-center clearfix  ">
+
+                                <input type="submit" name="commit" value="Submit" data-disable-with="In process..." class="submit gd-btn gd-btn-primary-solid  font-family-inherit with-shadow"
+                                />
+                                <input type="button" name="clear" value="Clear" data-disable-with="In process..." class="submit gd-btn gd-btn-primary-solid  font-family-inherit with-shadow"
+                                />
+
+                                <span class="page-number text-muted"></span>
+                                <a target="_blank" class="report-form-link gd-form-control-line-height" href="help.html">Help</a>
+                                <input type="hidden" name="embedded" id="embedded" />
+                                <input type="hidden" name="banner" id="banner" />
+                                <input type="hidden" name="header" id="header" />
+                                <input type="hidden" name="background" id="background" />
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer-content">
+                <div class="wrapper">
+                    <div class="performance clearfix">
+                        <div class="per-1 per">
+                            <a target="_blank" href="">
+                                <i></i>
+                                <div class="t">Contact us</div>
+                                <div class="st">© 2018 saskphysician. </div>
+                            </a>
+                        </div>
+                        <div class="per-2 per">
+                            <a target="_blank" href="">
+                                <i></i>
+                                <div class="t">Donation</div>
+
+                            </a>
+                        </div>
+                        <div class="per-3 per">
+                            <a target="_blank" href="">
+                                <i></i>
+                                <div class="t">Help us to improve</div>
+                                <div class="t">Be a volunteer</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>

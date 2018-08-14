@@ -1,0 +1,163 @@
+doctype transitional
+html(xmlns="http://www.w3.org/1999/xhtml")
+  head
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+    |     
+    meta(charset="UTF-8")
+    |     
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    |     
+    meta(http-equiv="X-UA-Compatible", content="ie=chrome")
+    |     
+    block title
+    |     
+    link(rel="shortcut icon", href="/img/favicon.png", type="image/x-icon")
+    |     
+    link(rel="stylesheet", href="/css1/index.css", type="text/css")
+    |
+    block headComplement
+    |
+    link(rel="stylesheet", href="/css/normalize.css", type="text/css")
+    //
+      <link rel="stylesheet" href="/css1/common.css" type="text/css" />
+      <link rel="style`sheet" href="/css1/inside.css" type="text/css" />
+    script(src="http://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+    |     
+    script(lang="javascript", src="/js1/index.js")
+    |     
+    script(language="javascript", type="text/javascript", src="/js/KunyiHTML5.min.js")
+    |     
+    script(language="javascript", type="text/javascript", src="/js/Kunyilibrary.js")
+    |
+  body
+    header
+      .topHidden
+      |         
+      .toolBase(style="top: 0px;")
+        .BaseMark
+          ul
+            li.first
+              a(href="login.html") Login
+            |                     
+            li
+              a(href="news.html") News
+            |                     
+            li
+              a(href="Office-71.html") Personnel
+            |                     
+            li
+              a(href="Message.html") Messages
+            |                     
+            li
+              a(href="Message.html") Help
+            |                     
+            li
+              a(href="about.html", target="_blank") About us
+            |                     
+            .language Select Language
+            |                     
+            .langBtn.animated
+              i.flag
+              | ENG
+              |                         
+              i.downBtn
+              |                         
+              a(href="javasript:;")
+                img.animated(src="images/ico_003.png", width="13", height="13")
+                | 中文
+      |         
+      .logoBase
+        br
+        |             
+        br
+        |             
+        br
+        |             
+        a(href="Index.html", style="font-size:40px; font-weight: 700;font-style:italic;color:rgba(206, 28, 230, 0.788) ;text-shadow:2px 2px 5px gray;")
+          | Family Physicians of Saskatoon
+        |             
+        .searchBase
+          .itemBase
+            .divType(data-state="0") Whole Site
+            |                     
+            ul
+              li(data-id="1") Whole Site
+              |                         
+              li(data-id="2") Search Phsician
+              |                         
+              li(data-id="3") 新闻动态
+          |                 
+          form(method="get", action="Search.html", onsubmit="return Kunyi.CheckSearchForm()")
+            input#Type(type="hidden", name="Type", value="1")
+            |                     
+            input#SearchWords(type="text", name="SearchWords", placeholder="Please input keywords", value="", autocomplete="off", onfocus="Kunyi.cls(event)", onblur="Kunyi.res(event)", maxlength="28")
+            |                     
+            input.boxsub.animated(type="submit", value="Search")
+    |     
+    .empty-placeholder.hidden
+    |     
+    #subNav
+      ul.wrap
+        li.adv_active
+          a.adv_door(href="/")
+            ins
+            | Physician List
+            span
+        |             
+        li
+          a(href="/appointment")
+            ins
+            | Appointment
+            span
+        |             
+        li
+          a.adv_price(href="/clinicInfo")
+            ins
+            | Clinic Information
+            span
+        |             
+        li
+          a.adv_transfer(href="/comments")
+            ins
+            | Comments and rating
+            span
+        |             
+        li
+          a.adv_payment(href="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=The%20Complaints%20Process%20Overview", target="_blank")
+            ins
+            | Complaints
+            span
+        |             
+        li
+          a.adv_promise(href="/newcomer")
+            ins
+            | NewComer's Manual
+            span
+    |     
+    block mainContent
+    |   
+    #footer
+      .footer-content
+        .wrapper
+          .performance.clearfix
+            .per-1.per
+              a(target="_blank", href="")
+                i
+                |                             
+                .t Contact us
+                |                             
+                .st © 2018 Saskphysician. 
+            |                     
+            .per-2.per
+              a(target="_blank", href="")
+                i
+                |                             
+                .t Donation
+            |                     
+            .per-3.per
+              a(target="_blank", href="")
+                i
+                |                             
+                .t Help us to improve
+                |                             
+                .t Be a volunteer

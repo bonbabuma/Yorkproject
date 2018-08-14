@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Physician choosing</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="css1/index.css" type="text/css" />
+    <link rel="stylesheet" href="css1/common.css" type="text/css" />    <!--大修车-->
+    <link rel="stylesheet" href="css1/inside.css" type="text/css" />    <!--大修车-->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <script lang="javascript">
+            const openWinPhysician=function(){
+          window.open('Newcomer.html',' ','height=300,width=600,top=100,left=100,toolbar=no,menubar=no,scrollbars=no,resizable=no,loction=no,status=no');
+              }
+        </script>
+
+    <script src='js1/index.js'></script>
+    <script language="javascript" type="text/javascript" src="js/KunyiHTML5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/Kunyilibrary.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="topHidden"></div>
+        <div class="toolBase" style="top: 0px;">
+            <div class="BaseMark">
+                <ul>
+                    <li class="first">
+                        <a href="login.html">login</a>
+                    </li>
+                    <li>
+                        <a href="https://61.163.73.190/por/login_psw.csp" target="_blank">OA</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <li>
+                        <a href="Office-71.html">Personnel</a>
+                    </li>
+                    <li>
+                        <a href="Message.html">Messages</a>
+                    </li>
+                    <li>
+                        <a href="Message.html">help</a>
+                    </li>
+    
+                    <div class="language">Select Language</div>
+                    <div class="langBtn animated">
+                        <i class="flag"></i>ENG
+                        <i class="downBtn"></i>
+                        <a href="javasript:;">
+                            <img src="images/ico_003.png" class="animated" width="13" height="13">中文</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="logoBase">
+            <br>
+            <br>
+            <br>
+            <a href="Index.html" style="font-size:40px; font-weight: 700;font-style:italic;color:rgba(206, 28, 230, 0.788) ;text-shadow:2px 2px 5px gray;">
+                &nbsp;&nbsp;&nbsp;Family Physicians of Saskatoon
+            </a>
+            <div class="searchBase">
+                <div class="itemBase">
+                    <div class="divType" data-state="0">Whole Site</div>
+                    <ul>
+                        <li data-id="1">Whole Site</li>
+                        <li data-id="2">Search Phsician</li>
+                        <li data-id="3">新闻动态</li>
+                    </ul>
+                </div>
+                <form method="get" action="Search.html" onsubmit="return Kunyi.CheckSearchForm()">
+                    <input type="hidden" id="Type" name="Type" value="1">
+                    <input type="text" name="SearchWords" placeholder="Please input keywords" value="" autocomplete="off" onfocus="Kunyi.cls(event)"
+                        onblur="Kunyi.res(event)" maxlength="28" id="SearchWords">
+                    <input type="submit" value="Search" class="boxsub animated">
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="empty-placeholder hidden"></div>
+    <div id="subNav" class="">
+        <ul class="wrap">
+            <li class="adv_active">
+                <a href="#hall_show" class="adv_door">
+                    <ins></ins>Physician List   
+                    <span></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#checkCar" class="adv_source">
+                    <ins></ins>Appointment
+                    <span></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#alpha_price" class="adv_price">
+                    <ins></ins>Clinic Information
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="#service_show" class="adv_transfer">
+                    <ins></ins>Comments and rating
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=The%20Complaints%20Process%20Overview" class="adv_payment" target="_blank">
+                    <ins></ins>Complaints
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a href="#quality_promise" class="adv_promise">
+                    <ins></ins>NewComer's Manual
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="hall_show" class="wrap">
+            <div class="show_title">
+              <h1><span></span>Physician List</h1>
+            </div>
+            <p>This section is dedicated to displaying physicians working in Saskatoon. <br>Click to see physician's profile, whether accepting new patients, post comments and make an <ins>appointment</ins>! 
+            </p>
+             <ul class="hallImg_show clearfix">
+              <li><a href="physician1.html"><img class='physician' alt="physician1" src="img/physician1.jpg"><ins>physician1</ins></a></li>
+              <li><a href="physician2.html"><img class='physician' alt="physician2" src="img/physician2.jpg"><ins>physician2</ins></a></li>
+              <li><img class='physician' alt="physician3" src="img/physician3.jpg"><ins>physician3</ins></li>
+              <li><img class='physician' alt="physician4" src="img/physician4.jpg"><ins>physician4</ins></li>
+              <li><img class='physician' alt="physician5" src="img/physician5.jpg"><ins>physician5</ins></li>
+              <li><img class='physician' alt="physician6" src="img/physician6.jpg"><ins>physician6</ins></li>
+         -->
+            </ul>
+
+          </div>
+
+          
+    <div class='physiciandisplay'> 
+        <h1>The names of Family Physicians in Saskatoon are displayed in alphabetical order.</h1>
+        <h2 style="color:red"><hr>Click to see profile, patients number, post comments and make an appointment!</h2>
+        <div>
+            <figure class='FloatFigure'>
+                <!--在有标题的情况下，如果不为每张图片单独设置，则总是垂直排列？？-->
+                <a href="physician1.html">
+                <img class='physician' style="width: 100px" src="img/physician1.jpg" alt="physician 1" title="physician1">
+                <figcaption>Physician 1</figcaption></a>
+            </figure>
+            <figure class='FloatFigure'>
+                <img class='physician' style="width: 70px" src="img/physician2.jpg" alt="physician 2" title="physician2">
+                <figcaption>Physician 2</figcaption>
+            </figure>
+            <figure class='FloatFigure'>
+                <img class='physician' style="width: 100px" src="img/physician3.jpg" alt="physician 3" title="physician3">
+                <figcaption>Physician 3</figcaption>
+            </figure>
+            <figure class='FloatFigure'>
+                <img class='physician' style="width: 80px" src="img/physician4.jpg" alt="physician 4" title="physician4">
+                <figcaption>Physician 4</figcaption>
+            </figure>
+            <figure class='FloatFigure'>
+                <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                <figcaption>Physician x</figcaption>
+            </figure>
+            <figure class='FloatFigure'>
+                    <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                    <figcaption>Physician x</figcaption>
+                </figure>
+                <figure class='FloatFigure'>
+                        <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                        <figcaption>Physician x</figcaption>
+                    </figure>
+            <figure class='FloatFigure'>
+                <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                <figcaption>Physician x</figcaption>
+            </figure>
+            <figure class='FloatFigure'>
+                    <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                    <figcaption>Physician x</figcaption>
+                </figure>
+                <figure class='FloatFigure'>
+                        <img class='physician' style="width: 70px" src="img/Canada-flag.jpg" alt="physician x" title="physicianx">
+                        <figcaption>Physician x</figcaption>
+                    </figure>
+                        
+        </div>
+    </div>
+</body>
+
+</html>
