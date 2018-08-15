@@ -90,12 +90,45 @@ li img:hover {
     box-shadow:2px 2px 16px 1px rgba(0,0,0,0.75);
   }
 
-#phyFile img{
-	
-}
-
 #phyFile h1{
 	font-family: fantasy;
+	margin:auto;
+	background-color: rgba(7, 64, 99, 0.425)
+}
+
+#phyFile1 thead tr {
+        background-color: rgba(26, 145, 219, 0.425);
+        text-align: center;
+        table-layout: auto;
+        border:black;
+		font-size: 22px;
+		font-weight:bold;
+        color:rgb(6, 2, 32);
+		}
+		
+#phyFile1 tbody {
+        background-color: rgba(220, 240, 252, 0.425);
+        text-align: center;
+        table-layout: auto;
+        border:black;
+        font-size: 16px;
+        color:rgb(6, 2, 32);
+		}
+
+#phyFile1 #comments,#phyFile1 #appointment,#phyFile1 #complain{
+	background-color: rgba(220, 240, 252, 0.425);
+        text-align: center;
+		table-layout: auto;
+		border:1px inset darkred;
+		font-family:Impact, Haettenschweiler;
+		color: #480d8b;
+        font-size: 16px;
+}
+
+#phyFile1 #comments:hover,#phyFile1 #appointment:hover, #phyFile1 #complain:hover{
+	text-decoration: none;
+	background-color:#480d8b;
+	color:white;
 }
 
 #footer{position:relative;zoom:1;}

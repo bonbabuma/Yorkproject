@@ -25,10 +25,10 @@ window.onload = function () {
         phyFile.find(`#phyFile${i+1}`).show(1000);
       };  
     }
-    */
-    /*
+    
+    
         $.ajax({
-            url: '/',
+            url: 'http://localhost:3001/database',
             type: 'get',
          //   contentType:'application/json',
             dataType: 'json',
@@ -39,15 +39,35 @@ window.onload = function () {
         }).done(function (data) {
             console.log(typeof data);
         }).fail((xhr, status) => {
-            alert('失败: ' + xhr.status + ', 原因: ' + status);
+            alert('Fail: ' + xhr.status + ', Reason: ' + status);
         });
-    */
+*/
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:3001/database",
+            "method": "GET",
+            "dataType": "json",
+            "data": {
+                "name": "AWAN, Malik"
+            },
+            "headers": {
+              "Cache-Control": "no-cache",
+              "Postman-Token": "bf3ec30d-d5e5-4917-9542-7f82dd6118f5"
+            }
+          };
+          
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
 
-    var jqxhr = $.getJSON('/', {
+    
+/*
+    var jqxhr = $.getJSON('/database', {
         name: 'AWAN, Malik',
         check: 1
     }).done(function (data) {
-        Console,log(data)// 
+        console,log(data)// 
     });
-
+    */
 }
