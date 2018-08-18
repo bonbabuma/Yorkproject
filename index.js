@@ -37,26 +37,27 @@ app.get('/', (req, res) => {
 })
 
 app.get('/database',(req,res)=>{
-    MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+  let a=req.query;
+//  console.log(a);
+  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('basicInfo');
-    collection.findOne({"name":"AWAN, Malik"}), function(error1, doc1){
-    console.log(doc1);
-    res.json({data:doc1.address});
-    //callback(doc);  //回应callback is not defined.
-    client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
-  };
+    collection.findOne({"name":a.name},function(error,doc){
+//    console.log(doc);
+    res.json(doc);
+    })        
+  })
 })
-})
+
 
 app.get('/appointment', (req, res) => {
   res.render('appointment');
 });
-/*
-app.get('/zhihu', (req, res) => {
-  res.render('zhihu');
+
+app.get('/clinicInfo', (req, res) => {
+  res.render('clinicInfo');
 });
-*/
+
 app.listen(3001);
 
 /**In this example we configured a root route

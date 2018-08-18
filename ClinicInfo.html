@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="js1/clinicInfo.js"></script>
 </head>
 <body>
-    clinic information!
+    <div class="loading hide"><!--hide这个属性研究一下-->
+        <img src="img/loader.gif" alt="loading image" title="loading">
+      </div>
+      <form class="form-wrapper">
+        <input type="text" id="search" placeholder="Input clinic name" required>
+        <input type="submit" value="go" id="submit"> <!--其它例子value=send，value的值是否很重要？-->
+      </form>
+      <div class="content">
+      </div>
 </body>
 </html>

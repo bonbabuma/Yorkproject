@@ -92,8 +92,8 @@ li img:hover {
 
 #phyFile h1{
 	font-family: fantasy;
-	margin:auto;
-	background-color: rgba(7, 64, 99, 0.425)
+	
+	background-color: white;
 }
 
 #phyFile1 thead tr {

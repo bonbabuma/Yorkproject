@@ -42,32 +42,31 @@ window.onload = function () {
             alert('Fail: ' + xhr.status + ', Reason: ' + status);
         });
 */
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "http://localhost:3001/database",
-            "method": "GET",
-            "dataType": "json",
-            "data": {
-                "name": "AWAN, Malik"
-            },
-            "headers": {
-              "Cache-Control": "no-cache",
-              "Postman-Token": "bf3ec30d-d5e5-4917-9542-7f82dd6118f5"
-            }
-          };
-          
-          $.ajax(settings).done(function (response) {
-            console.log(response);
-          });
-
-    
 /*
-    var jqxhr = $.getJSON('/database', {
-        name: 'AWAN, Malik',
-        check: 1
-    }).done(function (data) {
-        console,log(data)// 
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/database",
+        "method": "GET",
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Postman-Token": "61c718a2-1969-4fcb-925c-e8c5e4a777ba"
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response.address);
+        $('#phyFile1>h1').text(response.address);
     });
-    */
+*/
+//input.innderHTml=response
+
+    /*
+        var jqxhr = $.getJSON('/database', {
+            name: 'AWAN, Malik',
+            check: 1
+        }).done(function (data) {
+            console,log(data)// 
+        });
+        */
 }
