@@ -20,11 +20,13 @@ block mainContent
     | For any questions about use, please
     |             
     a(href="/contactus", style="color: peru") Contact US.
- |
- .loading.hide
-    img(src="img/loader.gif", alt="loading image", title="loading")
- |
- form.form-wrapper
-  input#search(type="text", placeholder="Search for...", required="")
-  |     
-  input#submit(type="submit", value="go")
+    |
+    .loading.hide
+       img(src="img/loader.gif", alt="loading image", title="loading")
+    |
+    form.form-wrapper
+     input#search(type="text", placeholder="Input clinic or community name, blank for all")
+     |     
+     input#submit(type="submit", value="go")
+    |
+    div.content 

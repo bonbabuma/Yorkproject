@@ -84,7 +84,6 @@ window.onload = function () {
             "Postman-Token": "61c718a2-1969-4fcb-925c-e8c5e4a777ba"
         }
     }
-
     $.ajax(settings).done(function (response) {
         console.log(response);
         $('.content').text(response.address);

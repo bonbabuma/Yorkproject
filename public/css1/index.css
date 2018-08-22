@@ -70,7 +70,7 @@ body {
   #hall_show{padding-bottom:5px}
   #hall_show .show_title{height:120px;background:url(../img/frontpage.jpg) 120px 0px no-repeat #586c90}
   #hall_show .show_title h1{font-size:25px;color:rgb(157, 188, 224);text-shadow:2px 2px 5px gray;background-color:maroon;margin-left:0px;margin-right:700px;padding-top:0px;padding-left:60px}
-  #hall_show p{color:#444;font-size:18px;padding-top:35px;line-height:1.8em;font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana;width:966px;margin:0 auto;margin-bottom:35px}
+  #hall_show p{color:#444;font-size:18px;padding-top:35px;line-height:1.8em;font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana;width:966px;margin:0 auto;margin-bottom:15px}
   #hall_show p ins{color:red;font-size:24px}  /*#ff4301*/
   .hallImg_show{padding-left:5px}
   .hallImg_show li{float:left;margin:5px;position:relative;}
@@ -97,13 +97,14 @@ li img:hover {
 }
 
 #phyFile1 thead tr {
-        background-color: rgba(26, 145, 219, 0.425);
+        background-color: rgb(8, 8, 151);
         text-align: center;
         table-layout: auto;
-        border:black;
+        border:darkblue;
 		font-size: 22px;
-		font-weight:bold;
-        color:rgb(6, 2, 32);
+		font-family: fantasy;
+		font-weight:1;
+        color:white;
 		}
 		
 #phyFile1 tbody {
@@ -131,6 +132,12 @@ li img:hover {
 	color:white;
 }
 
+td#clinic{
+	cursor: pointer;
+}
+td#clinic>a:hover{
+  color: orangered;
+}
 #footer{position:relative;zoom:1;}
 #footer {
 	margin-top: 30px;

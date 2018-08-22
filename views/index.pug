@@ -22,25 +22,25 @@ block mainContent
       |  
       |                 
       |             
-      #phyFile1()
-        h1 profileTitle
+      #phyFile1("hidden")
+        h1
         |
         table(border="1", style="border:3px solid;border-top-color:rgb(161, 39, 9); border-right-color: rgb(204, 121, 27);border-bottom-color: rgb(138, 30, 30);border-left-color:rgb(143, 60, 65);border-style:groove; box-shadow:0px 6px 6px grey")
           thead()
             tr
-              th picture
+              th Picture
               |                                 
-              th gender
+              th Gender
               |                                 
-              th status
+              th Status
               |                                 
-              th clinic
+              th Clinic
               |                                 
-              th address
+              th Address
               |                                 
-              th telephone
+              th Telephone
               |
-              th specialty
+              th Specialty
           |                         
           tbody
             tr
@@ -51,7 +51,9 @@ block mainContent
               |                                 
               td(id='status') On the Register
               |                                 
-              td(id='clinic') Victory Medical Associates
+              td(id='clinic') 
+                | 
+                a(href='')
               |                         
               td(id='address')
               |        
@@ -75,11 +77,13 @@ block mainContent
     ul.hallImg_show.clearfix
      each doc in documents
       li(onclick=`
-         $('#phyFile1>h1').text('${doc.name}')
+         $('#phyFile1').show(300)
+         $('#phyFile1>h1').text('Dr. ${doc.name}')
          $('#phyFile1 #picture>img').attr('src','${doc.image}')
          $('#phyFile1 #gender').text('${doc.gender}') 
          $('#phyFile1 #status').text('${doc.status}')
-         $('#phyFile1 #clinic').text('${doc.clinic}')
+         $('#phyFile1 #clinic>a').text('${doc.clinic}')
+         $('td#clinic>a').attr("href",'\/clinicInfo?clinic='+$('td#clinic>a').text())
          $('#phyFile1 #address').text('${doc.address}')
          $('#phyFile1 #address').text('${doc.telephone}')`)
         a(href="#")

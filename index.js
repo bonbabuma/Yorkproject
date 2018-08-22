@@ -11,41 +11,62 @@ app.get('/', (req, res) => {
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('basicInfo');
 
- //   console.log(collection.find({"name":"Naidu"}.toArray()));
+    //   console.log(collection.find({"name":"Naidu"}.toArray()));
 
-/*
-		collection.find({"name":"Naidu"}).toArray((error, documents) => {
-      res.render('index', { documents: documents });
-			client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
-    });
-*/
-/*
-    collection.findOne({"name":"Naidu"}, function(error,doc){
-	//		cursor.each(function(error,doc){
-         res.render('index', {profileTitle1: `Dr. ${doc.name}`, src1: doc.image, docImage: doc.image});
-         client.close();
-			})
-//		})*/
+    /*
+        collection.find({"name":"Naidu"}).toArray((error, documents) => {
+          res.render('index', { documents: documents });
+          client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
+        });
+    */
+    /*
+        collection.findOne({"name":"Naidu"}, function(error,doc){
+      //		cursor.each(function(error,doc){
+             res.render('index', {profileTitle1: `Dr. ${doc.name}`, src1: doc.image, docImage: doc.image});
+             client.close();
+          })
+    //		})*/
 
     collection.find({}).toArray((error, doc) => {
-      console.log(doc.length);
-      res.render('index', {documents: doc});
+      // console.log(doc.length);
+      res.render('index', { documents: doc });
       //callback(doc);  //回应callback is not defined.
       client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
     });
   })
 })
 
-app.get('/database',(req,res)=>{
-  let a=req.query;
-//  console.log(a);
+app.get('/database', (req, res) => {
+  let a = req.query;
+  //console.log(a.searchKey==undefined);
+  // const properties = Object.keys(a);
+  // console.log(properties[0]);
   MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
-    const collection = db.collection('basicInfo');
-    collection.findOne({"name":a.name},function(error,doc){
-//    console.log(doc);
-    res.json(doc);
-    })        
+    const collection = db.collection('clinicInfo');
+    const collectionBasicInfo = db.collection("basicInfo");
+   
+      if (a.searchKey ===""&& a.search===undefined) {
+        collection.find({}).toArray(function (error, doc) {
+          //  console.log(doc[0].address);
+          res.json(doc);
+          client.close();
+        })
+      } else if(a.searchKey!==""&&a.search===undefined) {
+        collection.find({ "$or": [{ "clinic": a.searchKey }, { "community": a.searchKey }] }).toArray(function (error, doc) {
+          //  console.log(doc[0].address);
+          res.json(doc);
+        })      
+    }else{
+      collectionBasicInfo.findOne({"name":a.search}, function(error,doc){
+       res.json(doc);
+      })
+    }
+    /*
+        collection.findOne({"gender":a.gender},function(error,doc){
+        console.log(doc);
+        res.json(doc);
+        })*/
   })
 })
 
