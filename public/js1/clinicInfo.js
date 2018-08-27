@@ -30,7 +30,7 @@ window.onload = function () {
     
     const form = $('.form-wrapper');
     const searchText=form.find('#search');
-    function clearContent() {
+    function clearContent() { //clear result area
         const content = document.querySelector('.content');
         content.innerHTML = '';
       }

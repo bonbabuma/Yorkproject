@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+var bodyParser = require('body-parser');//use body-parsing middleware to populate req.body.
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.use(express.static('public'));
 app.set('view engine', 'pug');
 
@@ -29,13 +34,15 @@ app.get('/', (req, res) => {
 
     collection.find({}).toArray((error, doc) => {
       // console.log(doc.length);
-      res.render('index', { documents: doc });
+      if (error) console.log( error );
+      else res.render('index', { documents: doc });
       //callback(doc);  //回应callback is not defined.
       client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
     });
   })
 })
 
+//fetch the data for '/' and '/clinic information'
 app.get('/database', (req, res) => {
   let a = req.query;
   //console.log(a.searchKey==undefined);
@@ -62,18 +69,45 @@ app.get('/database', (req, res) => {
        res.json(doc);
       })
     }
-    /*
-        collection.findOne({"gender":a.gender},function(error,doc){
-        console.log(doc);
-        res.json(doc);
-        })*/
   })
 })
 
+//insert new appointment
+app.post('/database',(req,res,next)=>{
+  let a = req.body;
+  console.log(a);
+  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+    const collectionAppointment = db.collection('appointment');   
+    const collectionClinic=db.collection('clinicInfo');
+    if(a.fullname===undefined){  //find the physicianList according to clinic selected
+    collectionClinic.findOne(a,(err,result)=>{
+     //console.log(result.physicianList);
+      res.json(result.physicianList);
+    });
+    }else{
+		collectionAppointment.insertOne(a,(err, result) => {
+      res.json(result.ops[0]);    
+    });
+   }
+  })
+})
 
-app.get('/appointment', (req, res) => {
-  res.render('appointment');
+app.post('/temp',(req,res)=>{
+  const a={"name": "luyao","gender":"Male","age":'secret'};
+  res.json(a);
+})
+
+app.get('/appointment', (req, res,next) => {
+  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+    const collection = db.collection('clinicInfo');
+    collection.find({}).toArray((error, doc) => {
+     res.render('appointment',{documents:doc});     
+    })
+  }) 
 });
+
 
 app.get('/clinicInfo', (req, res) => {
   res.render('clinicInfo');
