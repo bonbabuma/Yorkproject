@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');//use body-parsing middleware to populate req.body.
-
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -108,10 +107,42 @@ app.get('/appointment', (req, res,next) => {
   }) 
 });
 
-
 app.get('/clinicInfo', (req, res) => {
   res.render('clinicInfo');
 });
+
+app.post('/mail',(req,res)=>{
+let a = req.body;
+console.log(a.email);
+var nodemailer = require('nodemailer');
+var config = require("./secrets");
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'mengerpapa@gmail.com',
+    pass: config.emailPassword
+  }
+});
+
+var mailOptions = {
+  from: 'anonymous@saskphysician',
+  to: a.email,
+  subject: 'Sending Email using Node.js',
+  html: `<h3>From Saskphysician</h3>
+  <h3>Hi,${a.fullname}:<br><br> You just make an appointment with your physician, here is the detail:</h3>
+  <h3><li>Clinic:${a.clinic}</li><li>Physician:${a.physician}</li><li>Date:${a.date}</li><li>Time:${a.time}</li></h3>
+  <h3>Please present your healthcard and this email when you visit the clinic.</h3>
+  <h3>Please do not reply this email.</h3>`
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+   }
+ })
+})
 
 app.listen(3001);
 

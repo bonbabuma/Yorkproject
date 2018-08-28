@@ -43,7 +43,7 @@ window.onload=function(){
     });
 
     const form = $('#new_entry');
-    function search(event) { //Form submit action. Insert a new document into physicians's collection of appointment
+    function submitForm(event) { //Form submit action. Insert a new document into physicians's collection of appointment
         event.preventDefault();
     //    clearContent();
     var newAppoint={
@@ -81,10 +81,27 @@ window.onload=function(){
           var m1 = new MyModal.modal();          
              m1.show();   
         })
-
+        
+        //send confirmation email to users who book an appointment
+        var settings1 = {
+            async: true,
+            crossDomain: true,
+            url: '/mail',
+            type: 'post',
+            data: newAppoint,
+      //    dataType: 'json',
+            headers: {
+            "Cache-Control": "no-cache",
+            }
+            }
+            $.ajax(settings1).done(function (response) {
+            
+            })
+    
+        
     }
 
-    form.on('submit', search);
+    form.on('submit', submitForm);
 
     function GetRequest() { //Receive physician name and clinic name from Index page
         var url = location.search; //获取url中"?"符后的字串
