@@ -72,6 +72,7 @@ window.onload=function(){
         }
         $.ajax(settings).done(function (response) {
   //      console.log(response);
+          $('.m-middle>ul>li').remove();
           $('.m-middle>ul').append(`<li>Fullname: ${response.fullname}</li>`);
           $('.m-middle>ul').append(`<li>Gender: ${response.gender}</li>`);
           $('.m-middle>ul').append(`<li>Clinic: ${response.clinic}</li>`);
@@ -82,7 +83,7 @@ window.onload=function(){
              m1.show();   
         })
         
-        //send confirmation email to users who book an appointment
+        //call the server to send confirming email(immediately) and reminding email(1 day before the exact day) to users who booked the appointment
         var settings1 = {
             async: true,
             crossDomain: true,
@@ -95,15 +96,13 @@ window.onload=function(){
             }
             }
             $.ajax(settings1).done(function (response) {
-            
             })
-    
         
     }
 
     form.on('submit', submitForm);
 
-    function GetRequest() { //Receive physician name and clinic name from Index page
+    function GetRequest() { //Receive physician name and clinic name from Index page if use click 'book appointment' in that page.
         var url = location.search; //获取url中"?"符后的字串
         var theRequest = new Object();
         if (url.indexOf("?") != -1) {
@@ -122,6 +121,25 @@ window.onload=function(){
       $('#clinic').val(Request.clinic);
       $('#physician').val(Request.physician);
     }
+
+//Below is for switching between tabs
+(function ($) { 
+    $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+    
+    $('.tab ul.tabs li a').click(function (g) { 
+        var tab = $(this).closest('.tab'), 
+            index = $(this).closest('li').index();
+        
+        tab.find('ul.tabs > li').removeClass('current');
+        $(this).closest('li').addClass('current');
+        
+        tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
+        tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
+        
+        g.preventDefault();
+    } );
+})(jQuery);
+
 
 /*
     $('input.submit').on("click",function(){

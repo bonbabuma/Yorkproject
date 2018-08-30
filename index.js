@@ -111,7 +111,7 @@ app.get('/clinicInfo', (req, res) => {
   res.render('clinicInfo');
 });
 
-app.post('/mail',(req,res)=>{
+app.post('/mail',(req,res)=>{  //send mail to patients to confirm immediately after submit the form, as well as 1 day before the appointment day for reminding.
 let a = req.body;
 console.log(a.email);
 var nodemailer = require('nodemailer');
@@ -124,24 +124,48 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-var mailOptions = {
+var confirmMail = {
   from: 'anonymous@saskphysician',
   to: a.email,
-  subject: 'Sending Email using Node.js',
-  html: `<h3>From Saskphysician</h3>
-  <h3>Hi,${a.fullname}:<br><br> You just make an appointment with your physician, here is the detail:</h3>
+  subject: 'Book appointment successfully!',
+  html: `<h4>From Saskphysician Please do not reply this email.</h4>
+  <h3>Hi,${a.fullname},<br><br> You just booked an appointment with your physician, here is the detail:</h3>
   <h3><li>Clinic:${a.clinic}</li><li>Physician:${a.physician}</li><li>Date:${a.date}</li><li>Time:${a.time}</li></h3>
-  <h3>Please present your healthcard and this email when you visit the clinic.</h3>
-  <h3>Please do not reply this email.</h3>`
+  <h3 style="color:red">Please present your HEALTHCARD and this EMAIL when you visit the clinic.</h3>`
 };
 
-transporter.sendMail(mailOptions, function(error, info){
+transporter.sendMail(confirmMail, function(error, info){
   if (error) {
     console.log(error);
   } else {
     console.log('Email sent: ' + info.response);
    }
  })
+
+console.log(a.date.substr(0,4),a.date.substr(5,2)-1,a.date.substr(8,2)-1,21,20,0);
+
+var remindMail = {
+  from: 'anonymous@saskphysician',
+  to: a.email,
+  subject: 'Reminder for your tomorrow appointment!',
+  html: `<h5>From Saskphysician Please do not reply.</h5>
+  <h3 style="font-family: microsoft yahei">Hi,${a.fullname},<br><br> Just remind you about the appointment with your physician, here is the detail:</h3>
+  <h3><li>Clinic:${a.clinic}</li><li>Physician:${a.physician}</li><li>Appointment Date:${a.date}</li><li>Appointment Time:${a.time}</li></h3>
+  <h3 style="color:red">Please present your HEALTHCARD and this EMAIL when you visit the clinic.</h3>`
+};
+
+ var schedule = require('node-schedule');
+ var date = new Date(a.date.substr(0,4),a.date.substr(5,2)-1,a.date.substr(8,2)-1,17,10,0);
+ schedule.scheduleJob(date, function(){
+   //console.log('I love coding'); 
+   transporter.sendMail(remindMail, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+     }
+   })
+ });
 })
 
 app.listen(3001);

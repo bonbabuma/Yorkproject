@@ -1,19 +1,20 @@
 #hall_show .show_title{height:120px;background:url(../img/appointmentpage.jpg) 120px 0px no-repeat #586c90}
 
-/*Below is all about the FORM*/  
+/*Below is for about the FORM*/  
 	   .entry-container>.entry-container-inner .center {
 		   max-width: 700px;
 	   }
 
 	   form#new_entry {
-		   margin-left:160px;
-		   background-color: rgb(255, 249, 249);
+		   margin-left:0px;
+		   background-color:#e1e6d2;
 		   max-width: 700px;
 		   border-width: 0;
 		   border-color: rgb(230, 182, 62);
 	   }
 		div.form-header{
-		   background-color: rgb(226, 143, 35);
+		   background-color: white;
+		   color:#87d3b7;
 		   text-align: center;
 		   font-family: fantasy;
 		   font-style: italic;
@@ -30,4 +31,77 @@
 		  font-family:Arial, Helvetica, sans-serif;
 		  color: brown;
 	   }
+	   .m-modal{
+		font-size: 16px;
+		font-family:'Times New Roman', Times, serif
+	   }
 
+/*Below is for tab switch function*/
+	   .tab {
+		padding-top: 0px;
+		margin-bottom: 20px;
+		position: relative;
+		overflow: hidden;
+		background: #fff;
+		width: 70%;
+		margin: 0 auto;
+		font-family: 'Microsoft Yahei', sans-serif;
+		line-height: 1.5;
+		font-weight: 300;
+		color: #888;
+		-webkit-font-smoothing: antialiased;
+	  }
+	  
+	  .tabs {
+		display: table;
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		width: 100%;
+	  }
+	  .tabs li {
+		float: left;
+		line-height: 38px;
+		overflow: hidden;
+		padding: 0;
+		position: relative;
+	  }
+	  .tabs a {
+		background-color: #eff0f2;
+		border-bottom: 1px solid #fff;
+		color: #888;
+		font-weight: 500;
+		display: block;
+		letter-spacing: 0;
+		outline: none;
+		padding: 0 20px;
+		text-decoration: none;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+		border-bottom: 2px solid #87d3b7;
+	  }
+	  
+	  .tabs_item {
+		display: none;
+		padding: 0px 0;
+	  }
+	  .tabs_item h4 {
+		font-weight: bold;
+		color: #87d3b7;
+		font-size: 20px;
+	  }
+	  .tabs_item img {
+		width: 200px;
+		float: left;
+		margin-right: 30px;
+	  }
+	  .tabs_item:first-child {
+		display: block;
+	  }
+	  
+	  .current a {
+		color: #fff;
+		background: #87d3b7;
+	  }
+	  
