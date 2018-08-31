@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -51,10 +53,17 @@
 
 
     <div>
-        
-        <p>jdjdjasdslkfjaldfjaldsfldafjalf</p>
-        <link rel="stylesheet" href="">dddffff
+    <form action="">
+     <input type="checkbox" name="" id="" checked>date: 2018-02-21 time:09:00 <br>
+     <input type="checkbox" name="" id="">date: 2018-02-21 time:09:00
+     <input type="button" value='Delete'>
+    </form>
     </div>
+    <script>
+        $('form input[type=button]').click(function(){
+         console.log($("form input:checkbox:checked"));
+        })
+         </script>
 </body>
 
 </html>

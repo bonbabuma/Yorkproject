@@ -99,10 +99,56 @@ window.onload=function(){
             })
         
     }
-
     form.on('submit', submitForm);
+ 
+    //Below is for search function in the form of 'Cancel Appointment'
+    const cancelAppointment = $('#cancelAppointment');
+    function submitForm2(event) { //Form submit action. Insert a new document into physicians's collection of appointment
+    event.preventDefault();
+    var settings = {
+        async: true,
+        crossDomain: true,
+        url: '/database',
+        type: 'post',
+        data:{"fullname":$('#fullname2').val()},
+  //    dataType: 'json',
+        headers: {
+        "Cache-Control": "no-cache",
+        }
+        }
+        $.ajax(settings).done(function (response) {
+       //  console.log(response);
+         console.log($('label.checkbox input'));
+         $('label.checkbox').html('');
+         response.forEach(function(value,index){
+         $('label.checkbox').append(`<input type='checkbox' value=${value._id}> ${value.date} |${value.time} |Dr. ${value.physician} |${value.clinic} <br>`);
+         })
+         $('label.checkbox').append('<input id="delete" type="button", value="Delete">')
+        })
+    }
+        cancelAppointment.on('submit', submitForm2);
 
-    function GetRequest() { //Receive physician name and clinic name from Index page if use click 'book appointment' in that page.
+    //Below is for delete function in the form of 'Cancel Appointment'
+    function deleteAppointment(event) { //Form submit action. Insert a new document into physicians's collection of appointment
+    event.preventDefault();
+    var settings = {
+        async: true,
+        crossDomain: true,
+        url: '/database',
+        type: 'post',
+        data:{"_id":$('#cancelAppointment input:checkbox:checked').val()},
+  //    dataType: 'json',
+        headers: {
+        "Cache-Control": "no-cache",
+        }
+        }
+        $.ajax(settings).done(function (response) {
+         console.log(response);      
+        })
+    }
+        cancelAppointment.on('submit', deleteAppointment);
+
+    function GetRequest() { //Receive physician name and clinic name from the page of 'Physician List' if use click 'book appointment' in that page.
         var url = location.search; //获取url中"?"符后的字串
         var theRequest = new Object();
         if (url.indexOf("?") != -1) {
@@ -139,6 +185,7 @@ window.onload=function(){
         g.preventDefault();
     } );
 })(jQuery);
+
 
 
 /*

@@ -71,7 +71,7 @@ app.get('/database', (req, res) => {
   })
 })
 
-//insert new appointment
+//Used by the page of 'appointment'
 app.post('/database',(req,res,next)=>{
   let a = req.body;
   console.log(a);
@@ -79,14 +79,18 @@ app.post('/database',(req,res,next)=>{
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collectionAppointment = db.collection('appointment');   
     const collectionClinic=db.collection('clinicInfo');
-    if(a.fullname===undefined){  //find the physicianList according to clinic selected
-    collectionClinic.findOne(a,(err,result)=>{
-     //console.log(result.physicianList);
+    if(a.fullname===undefined){  //fill the droplist in 'Book appointment' with physicianList according to selected clinic
+      collectionClinic.findOne(a,(err,result)=>{
+      //console.log(result.physicianList);
       res.json(result.physicianList);
     });
+    }else if(a.fullname!==''&&a.date===undefined){
+      collectionAppointment.find(a).toArray(function (error, doc) {
+        res.json(doc);
+      })
     }else{
 		collectionAppointment.insertOne(a,(err, result) => {
-      res.json(result.ops[0]);    
+      res.json(result.ops[0]);
     });
    }
   })
@@ -98,8 +102,8 @@ app.post('/temp',(req,res)=>{
 })
 
 app.get('/appointment', (req, res,next) => {
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(url, function (err, client) {
+    const db = client.db('physicians');
     const collection = db.collection('clinicInfo');
     collection.find({}).toArray((error, doc) => {
      res.render('appointment',{documents:doc});     
@@ -115,11 +119,11 @@ app.post('/mail',(req,res)=>{  //send mail to patients to confirm immediately af
 let a = req.body;
 console.log(a.email);
 var nodemailer = require('nodemailer');
-var config = require("./secrets");
+var config = require("./secrets");  //put the password in another file, and ignore it from github.
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'mengerpapa@gmail.com',
+    user: 'saskphysician@gmail.com',
     pass: config.emailPassword
   }
 });

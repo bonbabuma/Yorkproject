@@ -5,7 +5,7 @@
 		   max-width: 700px;
 	   }
 
-	   form#new_entry {
+	   form#new_entry,form#cancelAppointment{
 		   margin-left:0px;
 		   background-color:#e1e6d2;
 		   max-width: 700px;
@@ -104,4 +104,8 @@
 		color: #fff;
 		background: #87d3b7;
 	  }
-	  
+
+/*Below is for search result of 'Cancel appointment' page*/
+.searchResult{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}

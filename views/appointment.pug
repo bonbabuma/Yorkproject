@@ -173,7 +173,8 @@ block mainContent
                         label.field-label.font-family-heiti(for="date")
                           | Date
                         |                                     
-                        label.field-label(style="margin-left:140px", for="time") Time
+                        label.field-label(style="margin-left:140px", for="time") 
+                          | Time
                       |                                 
                       .field-content
                         input#date(type="date", value="", name="")
@@ -199,17 +200,37 @@ block mainContent
 
       // / tabs_item
       .tabs_item
-        h4 Tab02 Maiores, suscipit
-        | 				
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, suscipit, eaque asperiores neque numquam nam possimus
-          | dolorem ipsa aspernatur reiciendis?
+        h4 Modify your appointment!
+
       // / tabs_item
       .tabs_item
-        h4 Tab03
-        | 				
-        p
-          | js代码（www.jsdaima.com）是IT资源下载及IT技能学习平台。js代码提供了丰富全面的js特效代码、网站模板、网站源码、视频教程等类型资源下载。js代码拒绝滥竽充数，我们只提供精品资源！
+        .entry-container-inner
+          form#cancelAppointment.with-shadow(action="" method="post")
+            .form-content.container-fluid
+              .row
+                .fields.clearfix
+                  .field.field-text-field.col-sm-12.required(data-api-code="field_1", data-type="TextField", data-label="", data-validations='["Presence"]')
+                    .form-group
+                      .field-label-container(onclick="")
+                        label.field-label.font-family-heiti(for="fullname2")
+                          | Full Name
+                        label.field-label.font-family-heiti(style="margin-left:170px", for="healthcard2")
+                          | Healthcard Number
+                      |                                 
+                      .field-content
+                        input#fullname2(type="text", value="", name="")
+                        |
+                        input#healthcard2(style="margin-left:20px" type="text", name="")
+                        |
+                        input#search(style="margin-left:20px" type="submit", name="search" value="search")
+                      |
+                      .searchResult
+                        label.checkbox.inline(onclick="")
+                          |
+                        br
+
+ 
+        
 
 
 
