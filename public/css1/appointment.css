@@ -92,9 +92,10 @@
 		font-size: 20px;
 	  }
 	  .tabs_item img {
-		width: 200px;
+		width: 50px;
 		float: left;
-		margin-right: 30px;
+		margin-top: 5px;
+		margin-right: 20px;
 	  }
 	  .tabs_item:first-child {
 		display: block;

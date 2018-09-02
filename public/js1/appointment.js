@@ -10,7 +10,7 @@ window.onload=function(){
 
 
     $('#clinic').click(function(event) {
-        event.target.value = '';// Clear the text when click.
+        event.target.value = '';// Clear the text of Clinic textbox when click it in "Book Appointment" page.
       });
 
     $('#clinic').change(function(){  //list the droplist of physicians according to clinic selected
@@ -43,7 +43,7 @@ window.onload=function(){
     });
 
     const form = $('#new_entry');
-    function submitForm(event) { //Form submit action. Insert a new document into physicians's collection of appointment
+    function submitForm(event) { //Submit action of Book appointment form. Insert a new document into the collection of appointment
         event.preventDefault();
     //    clearContent();
     var newAppoint={
@@ -100,7 +100,35 @@ window.onload=function(){
         
     }
     form.on('submit', submitForm);
- 
+
+    
+    //Below is for delete function in the form of 'Cancel Appointment'
+    function deleteRecord(event) { //Form submit action. Insert a new document into physicians's collection of appointment
+    event.preventDefault();
+    var checkboxChecked=[];
+    $('#cancelAppointment input:checkbox:checked').each(function(){
+    checkboxChecked.push($(this).val());
+    })
+   console.log(checkboxChecked);
+   var settings = {
+            async: true,
+            crossDomain: true,
+            url: '/cancelAppointment',
+            type: 'post',
+            data:{"_id":checkboxChecked},
+      //    dataType: 'json',
+            headers: {
+            "Cache-Control": "no-cache",
+            }
+            }
+    if(window.confirm('Are you sure to cancel selected appointment(s)?')){
+      $.ajax(settings).done(function (response) {
+       console.log(response);
+      })
+    }
+  }
+
+
     //Below is for search function in the form of 'Cancel Appointment'
     const cancelAppointment = $('#cancelAppointment');
     function submitForm2(event) { //Form submit action. Insert a new document into physicians's collection of appointment
@@ -108,7 +136,7 @@ window.onload=function(){
     var settings = {
         async: true,
         crossDomain: true,
-        url: '/database',
+        url: '/cancelAppointment',
         type: 'post',
         data:{"fullname":$('#fullname2').val()},
   //    dataType: 'json',
@@ -118,35 +146,19 @@ window.onload=function(){
         }
         $.ajax(settings).done(function (response) {
        //  console.log(response);
-         console.log($('label.checkbox input'));
-         $('label.checkbox').html('');
-         response.forEach(function(value,index){
-         $('label.checkbox').append(`<input type='checkbox' value=${value._id}> ${value.date} |${value.time} |Dr. ${value.physician} |${value.clinic} <br>`);
-         })
-         $('label.checkbox').append('<input id="delete" type="button", value="Delete">')
+            $('label.checkbox').html('');
+         if(response.length==0){
+            $('label.checkbox').append(`<img src='./img/notfound.jpg'><h5 style="color:darkred; padding-top:15px;padding-right:30px">Sorry, cannot find any appointments for ${$('#fullname2').val()}!</h5><hr>`)
+          }else{
+            response.forEach(function(value,index){
+            $('label.checkbox').append(`<input type='checkbox' value=${value._id}> ${value.date} |${value.time} |Dr. ${value.physician} |${value.clinic} <br>`);
+            })
+            $('label.checkbox').append('<input id="delete" type="button", value="Delete">')
+            $('#delete').click(deleteRecord);//click the 'Delete' button.          
+          }
         })
     }
         cancelAppointment.on('submit', submitForm2);
-
-    //Below is for delete function in the form of 'Cancel Appointment'
-    function deleteAppointment(event) { //Form submit action. Insert a new document into physicians's collection of appointment
-    event.preventDefault();
-    var settings = {
-        async: true,
-        crossDomain: true,
-        url: '/database',
-        type: 'post',
-        data:{"_id":$('#cancelAppointment input:checkbox:checked').val()},
-  //    dataType: 'json',
-        headers: {
-        "Cache-Control": "no-cache",
-        }
-        }
-        $.ajax(settings).done(function (response) {
-         console.log(response);      
-        })
-    }
-        cancelAppointment.on('submit', deleteAppointment);
 
     function GetRequest() { //Receive physician name and clinic name from the page of 'Physician List' if use click 'book appointment' in that page.
         var url = location.search; //获取url中"?"符后的字串

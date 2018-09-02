@@ -52,17 +52,21 @@
     </div>
 
 
-    <div>
+    <div style='background:url(./public/img/appointmentpage.jpg)'>
     <form action="">
      <input type="checkbox" name="" id="" checked>date: 2018-02-21 time:09:00 <br>
      <input type="checkbox" name="" id="">date: 2018-02-21 time:09:00
-     <input type="button" value='Delete'>
+     <input type="button" value='Delete' style="margin-right: 0mm;padding-right: 0mm">
     </form>
     </div>
     <script>
         $('form input[type=button]').click(function(){
          console.log($("form input:checkbox:checked"));
+         alert(Date());
         })
+        var d=new Date();
+        var n=d.toJSON();
+        console.log(n.substr(0,10),d.getDate(), new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate());
          </script>
 </body>
 
