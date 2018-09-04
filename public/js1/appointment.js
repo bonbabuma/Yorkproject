@@ -121,9 +121,11 @@ window.onload=function(){
             "Cache-Control": "no-cache",
             }
             }
-    if(window.confirm('Are you sure to cancel selected appointment(s)?')){
+    if(window.confirm('Are you sure to cancel the selected appointment(s)?')){
       $.ajax(settings).done(function (response) {
-       console.log(response);
+       alert(`Cancel ${response.successRecords.length} appointment(s) successfully!`);
+   //    console.log(response);
+       $('#cancelAppointment').trigger("submit");
       })
     }
   }

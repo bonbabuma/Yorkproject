@@ -4,6 +4,7 @@ block title
 
 block headComplement
   link(rel="stylesheet" type="text/css" href="/css1/appointment.css")
+  //- The css for POP UP WINDOW
   link(rel="stylesheet" type="text/css" href="/css1/jquery.my-modal.1.1.winStyle.css")
   script(src="/js1/appointment.js")
   script(type="text/javascript" src="/js1/jquery.my-modal.1.1.min.js")
@@ -17,7 +18,7 @@ block mainContent
       | Appointment
   |         
   p
-    | Here you can make,modify and cancell your appointment. Please conform with the norm of individual
+    | Here you can book,modify or cancell your appointment. Please conform with the norm of individual
     a(href="/clinicInfo", style="color:chocolate")  clinic
     | .
     |             
@@ -247,10 +248,8 @@ block mainContent
       // content
       p Your appointment information:<br><hr><br>
       ul
-      p <br>MOCK:An email has been sent to you. Please print it out or save it in your cellphone. You may need to present it when you get the clinic.
+      p <br>An email has been sent to you. Please print it out or save it in your cellphone. You may need to show it when you get the clinic.
         | 
     | 				
     .m-bottom
       button.m-btn-sure Confirm
-      | 					
-      button.m-btn-cancel Cancel

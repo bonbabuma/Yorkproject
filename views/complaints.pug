@@ -1,0 +1,14 @@
+extends ./layout.pug
+block title
+  title Complaints
+
+block headComplement
+  link(rel="stylesheet" type="text/css" href="/css1/appointment.css")
+  link(rel="stylesheet" type="text/css" href="/css1/jquery.my-modal.1.1.winStyle.css")
+  script(src="/js1/appointment.js")
+  script(type="text/javascript" src="/js1/jquery.my-modal.1.1.min.js")
+
+
+block mainContent
+  div(style="width:2000px;height:680px; margin:40px;overflow:hidden;")
+    iframe(src="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=1#ComplaintsCCO" style="position:relative;top:-290px;left:-390px;width:1500px;height:1000px;")

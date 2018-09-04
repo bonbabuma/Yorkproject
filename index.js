@@ -103,13 +103,17 @@ app.post('/cancelAppointment', (req, res, next) => {
       collectionAppointment.find(a).toArray(function (error, doc) {
         res.json(doc);
       })
-    } else {
+    } else{
+      let successRecords=[];
+      let errOcurr=0;
       a._id.forEach(function (value) {
-        //          console.log(value);
         collectionAppointment.deleteOne({ "_id": ObjectID(value) }, function (err, result) {
-          console.log(result.body);
-        });
+          if(err!==null){errOcurr+=1};
+        });        
+        if(errOcurr!==1){
+        successRecords.push(value);}
       })
+      res.json({"successRecords":successRecords,"errOcurr":errOcurr})
     }
   })
 })
@@ -126,6 +130,10 @@ app.get('/appointment', (req, res, next) => {
 
 app.get('/clinicInfo', (req, res) => {
   res.render('clinicInfo');
+});
+
+app.get('/complaints', (req, res) => {
+  res.render('complaints');
 });
 
 app.post('/mail', (req, res) => {  //send mail to patients to confirm immediately after submit the form, as well as 1 day before the appointment day for reminding.
@@ -172,7 +180,7 @@ schedule.scheduleJob(rule, function () {
     const db = client.db('physicians');
     const collection = db.collection('appointment');
     collection.find({"date":new Date().toJSON().substr(0,10)}).toArray((error, doc) => { //select the record including appointment in tomorrow.
-      console.log(doc[0],11111);
+    //  console.log(doc[0],11111);
     doc.forEach(function(value){
       var nodemailer = require('nodemailer');
       var config = require("./public/js1/secrets");  //put the password in another file, and ignore it from github.
@@ -206,7 +214,7 @@ schedule.scheduleJob(rule, function () {
   })
 })
 
-app.listen(3002);
+app.listen(3001);
 
 /**In this example we configured a root route
 Using the response render method we can send a response to the user
