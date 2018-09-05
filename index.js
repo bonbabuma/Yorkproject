@@ -136,7 +136,11 @@ app.get('/complaints', (req, res) => {
   res.render('complaints');
 });
 
-app.post('/mail', (req, res) => {  //send mail to patients to confirm immediately after submit the form, as well as 1 day before the appointment day for reminding.
+app.get('/comments', (req, res) => {
+  res.render('comments');
+});
+
+app.post('/mail', (req, res) => {  //send mail to patients to confirm immediately after submit the form
   let a = req.body;
   console.log(a.email);
   var nodemailer = require('nodemailer');
@@ -170,6 +174,7 @@ app.post('/mail', (req, res) => {  //send mail to patients to confirm immediatel
   })
 })
 
+//Below is for the reminding email for user who has an appointment tomorrow.
 var schedule = require('node-schedule');
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [new schedule.Range(0, 6)];
@@ -209,7 +214,7 @@ schedule.scheduleJob(rule, function () {
           console.log('Reminding Email sent: ' + info.response);
         }
       })
-    })
+     })
     })
   })
 })

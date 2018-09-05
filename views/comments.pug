@@ -1,0 +1,50 @@
+extends ./layout.pug
+block title
+  title Comments and Rating
+
+block headComplement
+  link(rel="stylesheet", href="/css1/comments.css", type="text/css")
+  link(href="css/jsdaima.com.css" rel="stylesheet" type="text/css")
+  script(src="/js1/comments.js")
+
+block mainContent
+  .item(style="z-index: 2; opacity: 0.3; left: 0px;")
+  .pic
+    a(href="#")
+      img(src="images/2.png")
+  |             
+  .txt
+    dl
+      dt
+        a(href="#") 标题信息7
+      |                     
+      dd.info 我们只祛痘 所以更专业
+      |                     
+      dd
+        span 总体评价：
+        .star
+          .star_red(style="width:62px;")
+          .star_grey
+      |                     
+      dd
+        span 用户印象：
+        span.pink 效果好
+        span.blue 细心
+        span.green 专业
+    |                 
+    .comment
+      h3 用户评价
+      |                     
+      .comment_list
+        ul#list
+          li
+            b 天涯hehaijiao：
+            | 这家店很好，顾客很多...
+          |                             
+          li
+            b 爱神马geili：
+            | 我治疗了两天感觉的好...
+          |                             
+          li
+            b 天上的语言：
+            | 这几天已经看到明显效...

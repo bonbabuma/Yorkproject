@@ -1,0 +1,12 @@
+#hall_show .show_title h1{
+    padding-left:25px;
+}
+
+#hall_show .show_title{height:120px;background:url(../img/comments.jpg) 100px 0px no-repeat #586c90}
+
+element.style {
+    z-index: 4;
+    opacity: 1;
+    left: 124px;
+}
+

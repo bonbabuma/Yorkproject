@@ -96,7 +96,7 @@ block mainContent
                           | Contact Number
                       |                                 
                       .field-content
-                        input#contactNo(type="tel", name="")
+                        input#contactNo(type="text", name="")
                   |                         
                   .field.field-mobile-field.col-sm-12.required(data-api-code="field_4", data-type="MobileField", data-label="手机", data-validations='["Presence","Format","VerificationTokenPresence"]')
                     .form-group
@@ -150,7 +150,7 @@ block mainContent
                           | Clinic
                       |                                 
                       .field-content
-                        input#clinic(list="clinics")
+                        input#clinic(list="clinics" autocomplete="off")
                         |                                     
                         datalist#clinics
                          each doc in documents
@@ -164,7 +164,7 @@ block mainContent
                       |                                 
                       .field-content
                         .field-content
-                          input#physician(list="physicians")
+                          input#physician(list="physicians" autocomplete="off")
                           |                                             
                           datalist#physicians
                   |                         
@@ -185,7 +185,7 @@ block mainContent
                   .field.submit-field.col-md-12.text-center.clearfix
                     input.submit.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="submit", name="commit", value="Book", data-disable-with="In process...")
                     |                         
-                    input.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="button", name="clear", value="Clear", data-disable-with="In process...")
+                    input.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="reset", name="clear", value="Clear", data-disable-with="In process...")
                     |                         
                     span.page-number.text-muted
                     |                         
@@ -252,4 +252,4 @@ block mainContent
         | 
     | 				
     .m-bottom
-      button.m-btn-sure Confirm
+      button.m-btn-sure OK

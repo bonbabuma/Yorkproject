@@ -7,13 +7,11 @@ window.onload=function(){
         }
     })
 
-
-
     $('#clinic').click(function(event) {
         event.target.value = '';// Clear the text of Clinic textbox when click it in "Book Appointment" page.
       });
 
-    $('#clinic').change(function(){  //list the droplist of physicians according to clinic selected
+    $('#clinic').change(function(){  //List the droplist of physicians based on selected clinic
     var settings = {
         async: true,
         crossDomain: true,
@@ -43,7 +41,7 @@ window.onload=function(){
     });
 
     const form = $('#new_entry');
-    function submitForm(event) { //Submit action of Book appointment form. Insert a new document into the collection of appointment
+    function submitForm(event) { //Submit Book appointment form. Insert a new document into the collection of appointment
         event.preventDefault();
     //    clearContent();
     var newAppoint={
@@ -72,6 +70,7 @@ window.onload=function(){
         }
         $.ajax(settings).done(function (response) {
   //      console.log(response);
+         // For the pop-up window to show information just submitted
           $('.m-middle>ul>li').remove();
           $('.m-middle>ul').append(`<li>Fullname: ${response.fullname}</li>`);
           $('.m-middle>ul').append(`<li>Gender: ${response.gender}</li>`);
@@ -83,7 +82,7 @@ window.onload=function(){
              m1.show();   
         })
         
-        //call the server to send confirming email(immediately) and reminding email(1 day before the exact day) to users who booked the appointment
+        //call the server to send confirming email(immediately after submit)
         var settings1 = {
             async: true,
             crossDomain: true,
@@ -100,9 +99,20 @@ window.onload=function(){
         
     }
     form.on('submit', submitForm);
+    
+    //This is for 'Clear' button.
+    jQuery(function($) { // onDomReady
+        // reset handler that clears the form
+        $('form#new_entry input[name=clear]').click(function () {
+            $('form#new_entry')
+                .find(':radio, :checkbox').removeAttr('checked').end()
+                .find('textarea, :text, select, :email, :date, :time').val('')
+            return false;
+        }); 
+    });
 
     
-    //Below is for delete function in the form of 'Cancel Appointment'
+    //This is for delete function in the form of 'Cancel Appointment'
     function deleteRecord(event) { //Form submit action. Insert a new document into physicians's collection of appointment
     event.preventDefault();
     var checkboxChecked=[];
@@ -183,7 +193,7 @@ window.onload=function(){
     }
 
 //Below is for switching between tabs
-(function ($) { 
+jQuery(function ($) { 
     $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
     
     $('.tab ul.tabs li a').click(function (g) { 
@@ -198,7 +208,7 @@ window.onload=function(){
         
         g.preventDefault();
     } );
-})(jQuery);
+});
 
 
 
