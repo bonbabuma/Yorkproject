@@ -12,9 +12,48 @@ window.onload = function () {
             this.parentElement.classList.add('adv_active');
         }
     })
+    
+    //search physician from database
+    const form=$('.searchPhysician');
+    function search(event) {//Submit the form to search clinics
+        event.preventDefault();
+//        clearContent();
+        const name = form.find('[name=name]').val();
+        const language=form.find('[name=language]').val();
+        const specialty=form.find('[name=specialty]').val();
+        //const searchKey="name";
+       // console.log(input);
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "/searchPhysician",
+            "method": "POST",
+            "data": {"name":name,"languages":language,"specialty":specialty},
+            "headers": {
+            "Cache-Control": "no-cache",
+            }
+            }
+            $.ajax(settings).done(function (response) {
+            //$('#phyFile1').show(300);
+//            console.log(response);
+            const item=$('.item');
+            item.each(function(){
+              $(this).hide();
+              for(i of response){
+              console.log($(this).find('ins').text(),`Dr. ${i.name}`);
+              if($(this).find('ins').text()===`Dr. ${i.name}`){
+              $(this).show();
+              }
+            }
+            })
+            })
+    }
 
-    function GetRequest() { //Receive para from clinicInfo
-        var url = location.search; //获取url中"?"符后的字串
+    form.on('submit', search);
+
+    //Receive para from the page of clinicInfo
+    function GetRequest() { 
+        var url = location.search; //get the string behind ? in URL.
         var theRequest = new Object();
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
@@ -42,7 +81,7 @@ window.onload = function () {
         $.ajax(settings).done(function (doc) {
             //   console.log(response);
             if (doc !== null) {
-                $('#phyFile1').show();
+                $('#phyFile1').show(300);
                 $('#phyFile1>h1').text(`Dr. ${doc.name}`);
                 $('#phyFile1 #picture>img').attr('src', doc.image);
                 $('#phyFile1 #gender').text(doc.gender);
@@ -50,7 +89,7 @@ window.onload = function () {
                 $('#phyFile1 #clinic>a').text(doc.clinic);
                 $('td#clinic>a').attr("href",'\/clinicInfo?clinic='+$('td#clinic>a').text())
                 $('#phyFile1 #address').text(doc.address);
-                $('#phyFile1 #address').text(doc.telephone);
+                $('#phyFile1 #telephone').text(doc.telephone);
             } else {
                 alert('Can\'t find the record!');
                 $('#phyFile1').hide();
@@ -65,7 +104,11 @@ window.onload = function () {
    // $('td#clinic>a').attr("href",`/clinicInfo?clinic=${this}.text()`);       
 
     $('#appointment').click(function(){ //Jump to appointment page with physician name and clinic name.
-        $(this).attr("href",'\/appointment?clinic='+$('#clinic>a').text()+'&'+'physician='+$('#phyFile1>h1').text().substr(4))
+        $(this).attr("href",'\/appointment?clinic='+$('#clinic>a').text()+'&'+'physician='+$('#phyFile1>h1').text().substr(4)+'#appointment')
+    })
+    
+    $('#more').click(function(){
+        $('#moreInfo').show(500);
     })
 
 }

@@ -12,7 +12,7 @@ block mainContent
     h1
       span
       | Clinic Information
-  |         
+    |         
   p
     | Here you can check the location and physicians of the clinic.
     |             
@@ -24,7 +24,7 @@ block mainContent
     .loading.hide
        img(src="img/loader.gif", alt="loading image", title="loading")
     |
-    form.form-wrapper
+    form#clinicSearch.form-wrapper
      input#search(type="text", placeholder="Input clinic or community name, blank for all")
      |     
      input#submit(type="submit", value="go")

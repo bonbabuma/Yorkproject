@@ -20,11 +20,11 @@
 	margin: 0px auto 50px auto;
 	overflow: hidden;
 	padding: 8px;
-	width: 450px;
+	width: 480px;
 }
 
 .form-wrapper #search {
-	border: 1px solid rgb(124, 221, 13);
+	border: 1px solid #31b2c3;
 	-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
 	-moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
 	box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
@@ -36,7 +36,7 @@
 	font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
 	height: 20px;
 	padding: 10px;
-	width: 320px;
+	width: 350px;
 }
 
 .form-wrapper #search:focus {
@@ -105,33 +105,28 @@
 .content {
 	border-top: 1px solid white(127, 6, 207);
 	background-color: white;
-	height: 1500px;
+	opacity: 1;
+	height:auto;
+	max-height: 850px;
+	width:auto;
+	overflow:auto;
 	padding-top: 40px;
 	text-align: left;
-	font-size: 0;
+	font-size: 0;	
 }
-
+/*
 .content>div:nth-child(1){
-	background: lightblue;
+	background: lightblue; 
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:18px;	
-}
-.content>div:nth-child(2){
-	background: rgb(241, 140, 140);
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:18px;	
-}
-.content>div:nth-child(3){
-	background: lightgoldenrodyellow;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:18px;	
-}
+	font-size:18px;	
+	opacity:1;
+}*/
 
 .content .episode {
 	vertical-align: top;
 	font-size: 16px;
 	display: inline-block;
-	width: 460px;
+	width: 450px;
 	margin-left: 15px;
 	margin-bottom: 30px;
 	text-align: center;
@@ -144,12 +139,19 @@
 }
 
  .episode h1 {
-	font-size: 20px;
-	height: 30px;
-    margin-top:20px;
+	background: white;
+    color: darkred;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size:18px;	
+    height: auto;
+    opacity: 1;
+    width: 470px;
+    margin-left: -10px;
+    margin-top: 10px;
 }
 
 .description{
+	font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
 	margin:10px;
 	padding:20px;
 	height: 180px;
@@ -185,4 +187,3 @@
 .hide {
 	visibility: hidden;
 }
-

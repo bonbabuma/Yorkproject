@@ -119,8 +119,8 @@ window.onload=function(){
     $('#cancelAppointment input:checkbox:checked').each(function(){
     checkboxChecked.push($(this).val());
     })
-   console.log(checkboxChecked);
-   var settings = {
+    console.log(checkboxChecked);
+    var settings = {
             async: true,
             crossDomain: true,
             url: '/cancelAppointment',
@@ -165,7 +165,7 @@ window.onload=function(){
             response.forEach(function(value,index){
             $('label.checkbox').append(`<input type='checkbox' value=${value._id}> ${value.date} |${value.time} |Dr. ${value.physician} |${value.clinic} <br>`);
             })
-            $('label.checkbox').append('<input id="delete" type="button", value="Delete">')
+            $('label.checkbox').append('<input id="delete" type="button", value="Cancel Appointments">')
             $('#delete').click(deleteRecord);//click the 'Delete' button.          
           }
         })

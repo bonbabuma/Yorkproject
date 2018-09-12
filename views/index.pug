@@ -2,8 +2,10 @@ extends ./layout.pug
 block title
   title Physician List
 
+block headComplement
+
 block mainContent
-  #hall_show.wrap
+  #hall_show.wrap(style='border:solid 1px; height:800px')
     .show_title
       h1
         span
@@ -12,104 +14,176 @@ block mainContent
     p
       | This section is dedicated to displaying physicians working in Saskatoon.
       br
-      | Click to see physician's profile, whether accepting new patients, post comments and make an
+      | Click to see physician's profile, whether accepting new patients, post comments and book an
       |             
       ins appointment
       | !
-    |         
-    |         
-    #phyFile(style="margin: 60px;")
-      |  
-      |                 
-      |             
-      #phyFile1("hidden")
-        h1
+      |         
+      |
+      div.hallImg_show         
+       .container-inner 
+        each doc in documents
+          .item(onclick=`
+             $('#moreInfo').hide()
+             $('#phyFile1').hide()
+             $('#phyFile1').show(300)
+             $('#phyFile1>h1').text('Dr. ${doc.name}')
+             $('#phyFile1 #picture>img').attr('src','${doc.image}')
+             $('#phyFile1 #gender').text('${doc.gender}') 
+             $('#phyFile1 #status').text('${doc.status}')
+             $('#phyFile1 #clinic>a').text('${doc.clinic}')
+             $('td#clinic>a').attr("href",'\/clinicInfo?clinic='+$('td#clinic>a').text()+'#clinicSearch')
+             $('#phyFile1 #address').text('${doc.address}')
+             $('#phyFile1 #telephone').text('${doc.telephone}')
+             $('#accept').text('${doc.accept}')
+             $('#workYear').text('${doc.workYear}')
+             $('#qualification').text('${doc.qualifications}')
+             $('#language').text('${doc.languages}')
+             $('#rate').text('${doc.rate}')
+             $('#disciplineHistory').text('${doc.disciplineHistory}')
+            `)
+            img(class="physician" alt=doc.index src=doc.image)
+            ins=`Dr. ${doc.name}`
         |
-        table(border="1", style="border:3px solid;border-top-color:rgb(161, 39, 9); border-right-color: rgb(204, 121, 27);border-bottom-color: rgb(138, 30, 30);border-left-color:rgb(143, 60, 65);border-style:groove; box-shadow:0px 6px 6px grey")
-          thead()
-            tr
-              th Picture
-              |                                 
-              th Gender
-              |                                 
-              th Status
-              |                                 
-              th Clinic
-              |                                 
-              th Address
-              |                                 
-              th Telephone
-              |
-              th Specialty
-          |                         
-          tbody
-            tr
-              td(id='picture')
-                img(src=src, alt="physician1", width="180px")
-              |                                 
-              td(id='gender')
-              |                                 
-              td(id='status') On the Register
-              |                                 
-              td(id='clinic') 
-                | 
-                a(href='')
-              |                         
-              td(id='address')
-              |        
-              td(id='telephone') 306-111-2222
-              |
-              td(id='specialty') Hematology
+      #searchPhysician
+        form.searchPhysician(action="submit")
+         input.nameSearch(type="search", name="name" placeholder='Physician name')
+         |
+         input.langSearch(type="search", name="language" list="languageList" autocomplete="off" placeholder="Physician language")
+         datalist(id='languageList')
+           option(value="English")
+           option(value="France")
+           option(value="Mandarin")
+           option(value="Spanish")
+           option(value="Urdu")
+         |
+         input.specSearch(type="search", name="specialty" list="specialtyList" autocomplete="off" placeholder='Physician specialty')
+         datalist(id='specialtyList')
+           option(value="Cardiology")
+           option(value="Child Health")
+           option(value="Community Medicine")
+           option(value="Family Medicine")
+           option(value="General Medicine")
+           option(value="General Surgery")
+         |
+         input.searchPhysician(type="submit", value="Search")
+         |
+         nbsp
+         |
+         input.searchPhysician(type="reset", value="Reset")
+      |        
+      #phyFile(style="" name='phyFile')
+        |  
         |                 
-        br
-        | 
-        div                
-          a(id='comments' href="/comments") Comments
-          |  
+        |             
+        #phyFile1("hidden")
+          h1
+          |
+          table(border="1", style="border:3px solid;border-top-color:rgb(161, 39, 9); border-right-color: rgb(204, 121, 27);border-bottom-color: rgb(138, 30, 30);border-left-color:rgb(143, 60, 65);border-style:groove; box-shadow:0px 6px 6px grey")
+            thead()
+              tr
+                th Portrait
+                |                                 
+                th Gender
+                |                                 
+                th Status
+                |                                 
+                th Clinic
+                |                                 
+                th Address
+                |                                 
+                th Telephone
+                |
+                th Specialty
+            |                         
+            tbody
+              tr
+                td(id='picture')
+                  img(src=src, alt="physician1", width="180px")
+                |                                 
+                td(id='gender')
+                |                                 
+                td(id='status') On the Register
+                |                                 
+                td(id='clinic') 
+                  | 
+                  a(href='')
+                |                         
+                td(id='address')
+                |        
+                td(id='telephone') 306-111-2222
+                |
+                td(id='specialty') Hematology
           |                 
-          a(id='appointment' href="/appointment") Make an appointment
-          |  
-          |                 
-          a(id='complain' href="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=The%20Complaints%20Process%20Overview", ;="", target="new")
-            | Complain
-    |
-    |
-    ul.hallImg_show.clearfix
-     each doc in documents
-      li(onclick=`
-         $('#phyFile1').show(300)
-         $('#phyFile1>h1').text('Dr. ${doc.name}')
-         $('#phyFile1 #picture>img').attr('src','${doc.image}')
-         $('#phyFile1 #gender').text('${doc.gender}') 
-         $('#phyFile1 #status').text('${doc.status}')
-         $('#phyFile1 #clinic>a').text('${doc.clinic}')
-         $('td#clinic>a').attr("href",'\/clinicInfo?clinic='+$('td#clinic>a').text())
-         $('#phyFile1 #address').text('${doc.address}')
-         $('#phyFile1 #address').text('${doc.telephone}')`)
-        a(href="#")
-          img(class="physician" alt=doc.index src=doc.image)
-          ins=`Dr. ${doc.name}`
-        
-
-
-//-    -const array=documents
-    div #{array[0].name}
-    -const i=document.querySelector('#hall_show>ul>li')
-    - li.get(0).onclick=function(){document.querySelector('#phyFile1').show();} 
-
-  script.
-    let li = $('#hall_show>ul>li');
-    let phyFile = $('#phyFile1');
-    console.log(li.get(0));
-    for (let i = 0; i < li.length; i++) {
-    li.get(i).onclick = function () {
-    $('#phyFile1').show();
-    $('#phyFile1>h1').text($(this).text());
-    $('#phyFile1 #picture>img').attr('src',$(this).find('img').attr('src'));
-    $('#phyFile1 #gender').text($(this).find('img').attr('gender'));
-    $('#phyFile1 #status').text($(this).find('img').attr('status'));
-    $('#phyFile1 #clinic').text($(this).find('img').attr('clinic'));
-    $('#phyFile1 #address').text($(this).find('img').attr('address'));
-    $('#phyFile1 #telephone').text($(this).find('img').attr('telephone'));
-    }
-    }
+          br
+          | 
+          div                
+            a(id='more' href="/#phyFile") More...
+            |  
+            a(id='comments' href="/comments") Comments
+            |  
+            |                 
+            a(id='appointment' href="/appointment") Book appointment
+            |  
+            |                 
+            a(id='complain' href="/complaints", ;="", target="new")
+              | Complain
+          |
+          br
+          |
+          table(id='moreInfo',"hidden",border="1", style="border:3px solid;border-top-color:rgb(161, 39, 9); border-right-color: rgb(204, 121, 27);border-bottom-color: rgb(138, 30, 30);border-left-color:rgb(143, 60, 65);border-style:groove; box-shadow:0px 6px 6px grey")
+            thead()
+              tr
+                th Accept New Patients
+                |                                 
+                th Work Year
+                |                                 
+                th Qualifications
+                |                                 
+                th Languages
+                |                                 
+                th Rate from patients
+                |                                 
+                th Discipline History
+            |                         
+            tbody
+              tr
+                td(id='accept') Y
+                |                                 
+                td(id='workYear') 10
+                |                                 
+                td(id='qualification') LMCC
+                |                                 
+                td(id='language') English
+                  | 
+                  a(href='')
+                |                         
+                td(id='rate') 5.0
+                |        
+                td(id='disciplineHistroy') None
+      |
+      |
+          
+  
+  
+//-      -const array=documents
+      div #{array[0].name}
+      -const i=document.querySelector('#hall_show>ul>li')
+      - li.get(0).onclick=function(){document.querySelector('#phyFile1').show();} 
+  
+  sc  ript.
+      let li = $('#hall_show>ul>li');
+      let phyFile = $('#phyFile1');
+      console.log(li.get(0));
+      for (let i = 0; i < li.length; i++) {
+      li.get(i).onclick = function () {
+      $('#phyFile1').show();
+      $('#phyFile1>h1').text($(this).text());
+      $('#phyFile1 #picture>img').attr('src',$(this).find('img').attr('src'));
+      $('#phyFile1 #gender').text($(this).find('img').attr('gender'));
+      $('#phyFile1 #status').text($(this).find('img').attr('status'));
+      $('#phyFile1 #clinic').text($(this).find('img').attr('clinic'));
+      $('#phyFile1 #address').text($(this).find('img').attr('address'));
+      $('#phyFile1 #telephone').text($(this).find('img').attr('telephone'));
+      }
+      }

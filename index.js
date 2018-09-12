@@ -11,27 +11,11 @@ var MongoClient = require('mongodb').MongoClient;   //官方推荐的连接方�
 const ObjectID = require('mongodb').ObjectID;
 const url = 'mongodb://localhost:27017';   //We know that by default MongoDB uses port 27017 and we have it installed in our local environment
 
+//used by the page of Physician List
 app.get('/', (req, res) => {
   MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('basicInfo');
-
-    //   console.log(collection.find({"name":"Naidu"}.toArray()));
-
-    /*
-        collection.find({"name":"Naidu"}).toArray((error, documents) => {
-          res.render('index', { documents: documents });
-          client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
-        });
-    */
-    /*
-        collection.findOne({"name":"Naidu"}, function(error,doc){
-      //		cursor.each(function(error,doc){
-             res.render('index', {profileTitle1: `Dr. ${doc.name}`, src1: doc.image, docImage: doc.image});
-             client.close();
-          })
-    //		})*/
-
     collection.find({}).toArray((error, doc) => {
       // console.log(doc.length);
       if (error) console.log(error);
@@ -42,12 +26,33 @@ app.get('/', (req, res) => {
   })
 })
 
-//fetch the data for '/' and '/clinic information'
+//Used for searching physicians in the page of Physician List
+app.post('/searchPhysician', (req, res) => {
+  let a = req.body;
+  console.log(a,111);
+  if(a.name===""){
+    delete a.name;
+  };
+  if(a.languages===""){
+    delete a.languages;
+  }
+  if(a.specialty===""){
+    delete a.specialty;
+  }
+  console.log(a,222);  
+  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+    const collection = db.collection("basicInfo"); 
+    collection.find(a).toArray((err, result) => {
+      if (err) console.log(error);
+      else res.json(result);
+    });
+  })
+})
+
+//fetch the data for 'Physician List' and '/Clinic Information'
 app.get('/database', (req, res) => {
   let a = req.query;
-  //console.log(a.searchKey==undefined);
-  // const properties = Object.keys(a);
-  // console.log(properties[0]);
   MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('clinicInfo');
@@ -72,7 +77,7 @@ app.get('/database', (req, res) => {
   })
 })
 
-//Used for 'book appointment' in the page of 'APPOINTMENT'
+//Used by 'book appointment' in the page of 'APPOINTMENT'
 app.post('/database', (req, res, next) => {
   let a = req.body;
   console.log(a);

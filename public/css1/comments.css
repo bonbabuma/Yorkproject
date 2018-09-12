@@ -3,10 +3,34 @@
 }
 
 #hall_show .show_title{height:120px;background:url(../img/comments.jpg) 100px 0px no-repeat #586c90}
-
+/*
 element.style {
     z-index: 4;
     opacity: 1;
     left: 124px;
+}*/
+
+.item .txt .comment .comment_list ul li {
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+.item {
+    display:block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 492px;
+    height: 230px;
+    overflow: hidden;
+    background: #FAFAFA;
+    border: 1px solid #ddd;
+   /* z-index: 1;*/
+    opacity: 1;
+    font: 12px/1.5 'Microsoft Yahei';
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
 }
 
