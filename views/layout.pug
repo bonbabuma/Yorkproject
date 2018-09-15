@@ -64,14 +64,14 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                 img.animated(src="images/ico_003.png", width="13", height="13")
                 | 中文
       |         
-      .logoBase
+      .logoBase(style="background-image:url(/img/MedicalKC33a.png)" no-repeat)
         br
         |             
         br
         |             
         br
         |             
-        a(href="/", style="font-size:40px; font-weight: 700;font-style:italic;color:rgba(206, 28, 230, 0.788);margin-left:50px;text-shadow:2px 2px 5px gray;")
+        a(href="/", style="font-size:40px; font-weight: 700;font-style:italic;color:rgba(206, 28, 230, 0.788);margin-left:80px;text-shadow:2px 2px 5px gray;")
           | Family Physicians of Saskatoon
         |             
         .searchBase
@@ -99,24 +99,28 @@ html(xmlns="http://www.w3.org/1999/xhtml")
         li
           a.adv_door(href="/")
             ins
+             img(src="/img/icons/1.png" width="40px" height="40px")
             | Physician List
             span
         |             
         li
           a(href="/appointment")
             ins
+             img(src="/img/icons/2.png" width="40px" height="40px")
             | Appointment
             span
         |             
         li
           a.adv_price(href="/clinicInfo")
             ins
+             img(src="/img/icons/3.png" width="40px" height="40px")
             | Clinic Information
             span
         |             
         li
           a.adv_transfer(href="/comments")
             ins
+             img(src="/img/icons/4.png" width="40px" height="40px")
             | Comments and Rating
             span
         |             
@@ -124,13 +128,15 @@ html(xmlns="http://www.w3.org/1999/xhtml")
           //- href="http://www.cps.sk.ca/imis/CPSS/Complaints/complaints.aspx?ComplaintsCCO=The%20Complaints%20Process%20Overview", target="_blank"
           a.adv_payment(href="/complaints")
             ins
+             img(src="/img/icons/5.png" width="40px" height="40px")
             | Complaints
             span
         |             
         li
           a.adv_promise(href="/newcomer")
             ins
-            | NewComer's Manual
+             img(src="/img/icons/6.png" width="40px" height="40px")
+            | NewComer
             span
     |     
     block mainContent

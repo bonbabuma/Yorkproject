@@ -47,6 +47,7 @@ window.onload = function () {
     function search(event) {//Submit the form to search clinics
         event.preventDefault();
         clearContent();
+ 
         const searchValue = $('#search').val();
         //const searchKey="name";
        // console.log(input);
@@ -61,9 +62,11 @@ window.onload = function () {
             }
             }
             $.ajax(settings).done(function (response) {
-                //console.log(response);
+                console.log(response);
                // const properties = Object.keys(response); //若有多个结果，则起用此两项。
-               const content = document.querySelector('.content');
+               $('.claimResult').show();
+               $('span.claimResult').text('Found '+response.length+' result(s) for '+(searchValue===''? "the whole city": `"${searchValue}"`));   
+                const content = document.querySelector('.content');
                 response.forEach(function(value,index){
                  //   console.log(value);
                     const div = document.createElement('div');

@@ -34,13 +34,12 @@ window.onload = function () {
             }
             }
             $.ajax(settings).done(function (response) {
-            //$('#phyFile1').show(300);
-//            console.log(response);
+            console.log(response);
             const item=$('.item');
             item.each(function(){
               $(this).hide();
               for(i of response){
-              console.log($(this).find('ins').text(),`Dr. ${i.name}`);
+ //             console.log($(this).find('ins').text(),`Dr. ${i.name}`);
               if($(this).find('ins').text()===`Dr. ${i.name}`){
               $(this).show();
               }
@@ -81,7 +80,7 @@ window.onload = function () {
         $.ajax(settings).done(function (doc) {
             //   console.log(response);
             if (doc !== null) {
-                $('#phyFile1').show(300);
+                $('#phyFile1').show(200);
                 $('#phyFile1>h1').text(`Dr. ${doc.name}`);
                 $('#phyFile1 #picture>img').attr('src', doc.image);
                 $('#phyFile1 #gender').text(doc.gender);
@@ -108,7 +107,7 @@ window.onload = function () {
     })
     
     $('#more').click(function(){
-        $('#moreInfo').show(500);
+        $('#moreInfo').show(100);
     })
 
 }

@@ -18,8 +18,12 @@ app.get('/', (req, res) => {
     const collection = db.collection('basicInfo');
     collection.find({}).toArray((error, doc) => {
       // console.log(doc.length);
-      if (error) console.log(error);
-      else res.render('index', { documents: doc });
+      if (error){
+        throw error;
+      }
+      else{
+        res.render('index', { documents: doc })
+      };
       //callback(doc);  //回应callback is not defined.
       client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
     });
@@ -98,6 +102,7 @@ app.post('/database', (req, res, next) => {
   })
 })
 
+//used for cancelAppointment
 app.post('/cancelAppointment', (req, res, next) => {
   let a = req.body;
   console.log(a);
@@ -145,6 +150,10 @@ app.get('/comments', (req, res) => {
   res.render('comments');
 });
 
+app.get('/newcomer', (req, res) => {
+  res.render('newcomer');
+});
+
 app.post('/mail', (req, res) => {  //send mail to patients to confirm immediately after submit the form
   let a = req.body;
   console.log(a.email);
@@ -183,8 +192,8 @@ app.post('/mail', (req, res) => {  //send mail to patients to confirm immediatel
 var schedule = require('node-schedule');
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [new schedule.Range(0, 6)];
-rule.hour = 23;
-rule.minute = 33;
+rule.hour = 18;
+rule.minute = 08;
 schedule.scheduleJob(rule, function () {
    MongoClient.connect(url, function (err, client) {
     const db = client.db('physicians');
@@ -225,15 +234,3 @@ schedule.scheduleJob(rule, function () {
 })
 
 app.listen(3001);
-
-/**In this example we configured a root route
-Using the response render method we can send a response to the user
-The render method accepts two parameters
-The first parameter is the template name
-The second parameter is a JavaScript object where each property will become a template variable
-So, calling http://localhost:3000 will render the index.pug template passing Hey text as title value and Hello there! as message
-Express will render the template and create the content to send to the user
-The final template result will be:
-
-可以使用HTML2Jade - HTML to Jade Online Realtime Converter，将html转化为pug。
-*/

@@ -1,4 +1,4 @@
-#hall_show .show_title{height:120px;background:url(../img/clinicInfo.jpg) 50px 0px no-repeat #586c90}
+#hall_show .show_title{height:120px;background:url(../img/clinicInfo.jpg) 50px 0px no-repeat #133C55}
 
 .form-wrapper {
 	background-color: #361cc5;
@@ -21,6 +21,7 @@
 	overflow: hidden;
 	padding: 8px;
 	width: 480px;
+	margin-bottom:20px;
 }
 
 .form-wrapper #search {
@@ -100,6 +101,19 @@
 
 .form-wrapper #submit::-moz-focus-inner {
 	border: 0;
+}
+
+div.claimResult{
+	margin-left:0px;
+
+    background-color:#CC5803
+}
+span.claimResult{
+	font-family:Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
+	font-size:15px;
+	color:white;
+	padding:0px;
+	margin-left:280px
 }
 
 .content {

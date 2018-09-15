@@ -74,7 +74,7 @@ header .langBtn a:hover{ text-decoration:underline;}
 header .langBtn a:hover img{ left:28px;}
 header .logoBase{ height:130px; position:relative;}
 header .logoBase .load{ top:46px; position:absolute; left:0px;}
-header .searchBase{ position:absolute; width:545px; height:48px; right:0px;top:43px; border:2px solid #ddd;}
+header .searchBase{ position:absolute; width:545px; height:48px; right:20px;top:43px; border:2px solid #ddd;}
 header .searchBase .itemBase{ width:114px; border-right:1px solid #ddd; line-height:48px; height:48px;}
 header .searchBase .itemBase ul{ position:absolute; padding:12px 0px 9px 0px; width:114px; height:auto; top:48px; left:-2px; border-right:1px solid #ddd; border-bottom:2px solid #ddd;border-left:2px solid #ddd;border-top:2px solid #ddd; display:none; z-index:1001; background:#FFF;}
 header .searchBase .itemBase ul li{ padding:0px; float:none; height:28px; line-height:28px; background:none; text-indent:20px; cursor:pointer;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear;}

@@ -36,15 +36,15 @@ body {
     background-color: #eee;
   }
 
-  #subNav{width:100%;height:80px;background-color:rgb(24, 6, 75);margin-bottom:20px}
+  #subNav{width:100%;height:80px;background-color:rgb(2, 116, 116);margin-bottom:20px}
   #subNav li{float:left;position:relative}
   #subNav .wrap{width:1002px;}
-  #subNav a{display:block;width:167px;height:67px;text-align:center;color:#9c9a9a;padding-top:13px}
+  #subNav a{display:block;width:167px;height:67px;text-align:center;color:#9c9a9a;padding-top:13px;font-size:13px}
   #subNav a:hover{text-decoration:none}
   #subNav a ins{display:block;width:52px;height:40px;margin:0 auto;max-height:40px;background:url('/img') no-repeat 10px -334px}
   #subNav a span{position:absolute;width:20px;height:20px}
-  #subNav a:hover,#subNav .adv_active a{background-color:rgb(121, 11, 93);color:#fff}
-  #subNav a:hover ins,#subNav .adv_active ins{background:url('/img') no-repeat 10px -190px}
+  #subNav a:hover,#subNav .adv_active a{background-color:rgb(121, 11, 93);color:#fff;font-size:15px}
+
   #subNav a:hover span,#subNav .adv_active span{background:url('/img') no-repeat 0 -90px;left:76px;bottom:-10px;_background:none}
   #subNav .adv_source ins{background-position:-49px -334px}
   #subNav .adv_price ins{background-position:-101px -334px}
@@ -67,8 +67,8 @@ body {
   #brand_affect,#hall_show,#alpha_price,#checkCar,#rideCar,#quality_promise,#stockFinance,#ourInfo,#sellFlow
   {background-color:#fff;margin-bottom:20px;border:1px solid #d9d9d9}
   
-  #hall_show{padding-bottom:5px;max-height:1200px}
-  #hall_show .show_title{height:120px;background:url(../img/frontpage.jpg) 120px 0px no-repeat #586c90}
+  #hall_show{padding-bottom:5px;max-height:1200px;}
+  #hall_show .show_title{height:120px;background:url(../img/frontpage.jpg) 120px 0px no-repeat #133C55;border-bottom: 8px solid #ff9800;}
   #hall_show .show_title h1{font-size:25px;color:rgb(157, 188, 224);text-shadow:2px 2px 5px gray;background-color:maroon;margin-left:0px;margin-right:700px;padding-top:0px;padding-left:60px}
   #hall_show p{color:#444;font-size:18px;padding-top:35px;line-height:1.8em;font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana;width:966px;margin:0 auto;margin-bottom:15px}
   #hall_show p ins{color:red;font-size:24px;height:auto}  /*#ff4301*/ 
@@ -77,17 +77,17 @@ body {
   .hallImg_show ins{position:absolute;left:0;bottom:0;width:100%;zoom:1;line-height:9px;padding:10px 0;background-color:rgba(0,0,0,0.5);font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana;color:#fff;text-align:center;font-size:10px;height:auto}
 
 
-	::-webkit-scrollbar {
+::-webkit-scrollbar {
 		width: 0px;
-
+		display: flex
   }
 
 ::-webkit-scrollbar-track {
-	background-color:grey;
+	background-color:rgba(2, 24, 43, 0.582);
 } /* 滚动条的滑轨背景颜色 */
 
 ::-webkit-scrollbar-thumb {
-	background-color: rgba(0, 0, 0, 0.2); 
+	background-color:rgba(213, 86, 114, 0.411); 
 } /* 滑块颜色 */
 
 ::-webkit-scrollbar-button {
@@ -99,15 +99,15 @@ body {
 } /* 横向滚动条和纵向滚动条相交处尖角的颜色 */
 
   div.hallImg_show{
-	border: 0.5px solid rgb(167, 134, 221);
-	border-radius: 5px;
-	background:rgb(245, 245, 220);
-	max-width:880px;
-	max-height:116px;
-	width: 1000px; height: 210px; 
+	border-top: 6px solid rgb(121, 11, 93);
+	border-radius: 0px;
+	background:wheat;
+	max-width:1000px;
+	max-height:126px;
+	width: 995px; height: 220px; 
 	overflow-x:scroll;
 	overflow-y:hidden;
-	margin-left:30px;
+	margin-left:0px;
 }
 div.hallImg_show .container-inner{
 	width: 10000px;

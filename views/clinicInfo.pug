@@ -14,7 +14,7 @@ block mainContent
       | Clinic Information
     |         
   p
-    | Here you can check the location and physicians of the clinic.
+    | Here you can check the location and physicians of clinic by its name or by community name.
     |             
     br
     | For any questions about use, please
@@ -28,5 +28,8 @@ block mainContent
      input#search(type="text", placeholder="Input clinic or community name, blank for all")
      |     
      input#submit(type="submit", value="go")
+    |
+    div.claimResult('hidden') 
+      span.claimResult Found 2 results for: community of 'lakeview' 
     |
     div.content 

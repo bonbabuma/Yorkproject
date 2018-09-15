@@ -1,56 +1,29 @@
 extends ./layout.pug
 block title
-  title Physician List
+  title Newcomer
 
 block headComplement
+  link(rel='stylesheet' type='text/css' href='/css1/newcomer.css')
 
 block mainContent
   #hall_show.wrap(style='border:solid 0px; height:800px')
     .show_title
       h1
         span
-        | Physician List
+        | Newcomer
     |         
     p
-      | This section is dedicated to displaying physicians working in Saskatoon.
-      br
-      | Click to see physician's profile, whether accepting new patients, post comments and book an
-      |             
-      ins appointment
-      | !
+      | This section caters to newcomers of Saskatoon. Provide information for seeking family physicians, hospitals, and dealing with emergency.
       |         
       |
       div.hallImg_show         
        .container-inner 
-        each doc in documents
-          .item(onclick=`
-             $('#moreInfo').hide()
-             $('#phyFile1').hide()
-             $('#phyFile1').show(300)
-             $('#phyFile1>h1').text('Dr. ${doc.name}')
-             $('#phyFile1 #picture>img').attr('src','${doc.image}')
-             $('#phyFile1 #gender').text('${doc.gender}') 
-             $('#phyFile1 #status').text('${doc.status}')
-             $('#phyFile1 #clinic>a').text('${doc.clinic}')
-             $('td#clinic>a').attr("href",'\/clinicInfo?clinic='+$('td#clinic>a').text()+'#clinicSearch')
-             $('#phyFile1 #address').text('${doc.address}')
-             $('#phyFile1 #telephone').text('${doc.telephone}')
-             $('#accept').text('${doc.accept}')
-             $('#workYear').text('${doc.workYear}')
-             $('#qualification').text('${doc.qualifications}')
-             $('#language').text('${doc.languages}')
-             $('#rate').text('${doc.rate}')
-             $('#disciplineHistory').text('${doc.disciplineHistory}')
-            `)
-            img(class="physician" alt=doc.index src=doc.image)
-            ins=`Dr. ${doc.name}`
+        | You’re Not Alone With the Smart Start program, male or female adults will find effective ways to gradually add exercise to their daily routine and improve the chance that they’ll stick with it for life. Smart Start includes a whole range of fitness classes, but it is so much more than that. It is a complete source of information on fitness-related topics, special programs, instruction, and support mechanisms that will not only help you get started with a fitness plan, but increase your chance of success. There is no single right way to develop lasting fitness habits, so we offer a variety of programs, at many different times and locations, to better suit your personal preferences and busy schedule. All you have to do is select activities that interest you and be willing to learn the basic skills. You can then do it on your own or with other adults, who have similar skill levels.
+
         |
       #searchPhysician
         form.searchPhysician(action="submit")
-         input.nameSearch(type="search", name="name" list='physicianList' placeholder='Physician name')
-         datalist(id='physicianList')
-          each doc in documents
-           option(value=`${doc.name}`)
+         input.nameSearch(type="search", name="name" placeholder='Physician name')
          |
          input.langSearch(type="search", name="language" list="languageList" autocomplete="off" placeholder="Physician language")
          datalist(id='languageList')
@@ -166,25 +139,3 @@ block mainContent
       |
           
   
-  
-//-      -const array=documents
-      div #{array[0].name}
-      -const i=document.querySelector('#hall_show>ul>li')
-      - li.get(0).onclick=function(){document.querySelector('#phyFile1').show();} 
-  
-  sc  ript.
-      let li = $('#hall_show>ul>li');
-      let phyFile = $('#phyFile1');
-      console.log(li.get(0));
-      for (let i = 0; i < li.length; i++) {
-      li.get(i).onclick = function () {
-      $('#phyFile1').show();
-      $('#phyFile1>h1').text($(this).text());
-      $('#phyFile1 #picture>img').attr('src',$(this).find('img').attr('src'));
-      $('#phyFile1 #gender').text($(this).find('img').attr('gender'));
-      $('#phyFile1 #status').text($(this).find('img').attr('status'));
-      $('#phyFile1 #clinic').text($(this).find('img').attr('clinic'));
-      $('#phyFile1 #address').text($(this).find('img').attr('address'));
-      $('#phyFile1 #telephone').text($(this).find('img').attr('telephone'));
-      }
-      }

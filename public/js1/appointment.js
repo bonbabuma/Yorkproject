@@ -56,7 +56,7 @@ window.onload=function(){
         "date":$('#date').val(),
         "time":$('#time').val(),
     }
-    
+
     var settings = {
         async: true,
         crossDomain: true,
@@ -70,7 +70,7 @@ window.onload=function(){
         }
         $.ajax(settings).done(function (response) {
   //      console.log(response);
-         // For the pop-up window to show information just submitted
+         // For the pop-up window to show information just after submitted
           $('.m-middle>ul>li').remove();
           $('.m-middle>ul').append(`<li>Fullname: ${response.fullname}</li>`);
           $('.m-middle>ul').append(`<li>Gender: ${response.gender}</li>`);
@@ -160,7 +160,7 @@ window.onload=function(){
        //  console.log(response);
             $('label.checkbox').html('');
          if(response.length==0){
-            $('label.checkbox').append(`<img src='./img/notfound.jpg'><h5 style="color:darkred; padding-top:15px;padding-right:30px">Sorry, cannot find any appointments for ${$('#fullname2').val()}!</h5><hr>`)
+            $('label.checkbox').append(`<div style='background:darkred;color:#e6bb10;font-size:15px;margin-top:15px;margin-left:-40px'><span style="margin-left:140px">Sorry, cannot find any appointments for ${$('#fullname2').val()}!</span></div>`)
           }else{
             response.forEach(function(value,index){
             $('label.checkbox').append(`<input type='checkbox' value=${value._id}> ${value.date} |${value.time} |Dr. ${value.physician} |${value.clinic} <br>`);
