@@ -239,5 +239,5 @@ app.listen(PORT, function(err) {
     console.log(err);
     return;
   }
-  console.log('listening on port 8000');
+  console.log('listening on port '+PORT);
 });
