@@ -105,7 +105,7 @@ app.post('/database', (req, res, next) => {
 //used for cancelAppointment
 app.post('/cancelAppointment', (req, res, next) => {
   let a = req.body;
-  console.log(a);
+  console.log(a,'CANCEL APPOINTMENT');
   MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
     const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
     const collectionAppointment = db.collection('appointment');

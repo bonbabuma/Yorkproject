@@ -54,7 +54,11 @@
 	   .m-modal{
 		font-size: 16px;
 		font-family:'Times New Roman', Times, serif
-	   }
+		 }
+		 
+		 strong.high{
+			 color:red;
+		 }
 
 /*Below is for tab switch function*/
 	   .tab {

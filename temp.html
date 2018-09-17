@@ -1,75 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<title>jQuery validation plug-in - main demo</title>
+<link rel="stylesheet" href="css/screen.css">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="public/js1/jquery.validate.js"></script>
+<script>
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
 
+	$().ready(function() {
+		// validate the comment form when it is submitted
+		$("#commentForm").validate();
+
+	});
+	</script>
+<style>
+	#commentForm {
+		width: 500px;
+	}
+	#commentForm label {
+		width: 250px;
+	}
+	#commentForm label.error, #commentForm input.submit {
+		margin-left: 253px;
+	}
+	#signupForm {
+		width: 670px;
+	}
+	#signupForm label.error {
+		margin-left: 10px;
+		width: auto;
+		display: inline;
+	}
+	#newsletter_topics label.error {
+		display: none;
+		margin-left: 103px;
+	}
+	</style>
 </head>
-
 <body>
-    <div class="wrap" id="hall_show">
-        <div class="show_title">
-            <h1>
-                <span></span>Clinic Information</h1>
-        </div>
-        <a href="https://capogvsvvbhfsmolqohkk-free.10to8.com" data-uuid="ce04c0d0-bbdd-4206-9606-816d2c8d54c0">Book With Me</a>
-        <p>Here you can check the location and physicians of the clinic.
-            <br>For any questions about use, please
-            <a href="/contactus" style="color: peru">Contact US.</a>
-        </p>
-        <div class="loading hide">
-            <img src="img/loader.gif" alt="loading image" title="loading">
-        </div>
-        <form class="form-wrapper">
-            <input id="search" type="text" placeholder="Input clinic or suburb name, blank for all">
-            <input id="submit" type="submit" value="go">
-        </form>
-        <div class="content">
-            <div class="episode">
-                <h1>AWAN, Malik</h1>
-                <a>
-                    <img src="/img/physician1.jpg" title="See map">
-                </a>
-                <div class="description" style="height: 120px; overflow: scroll;">Victory Medical Associates
-                    <br>329 - 20th Street West
-                    <br>306-111-1111</div>
-                <div>
-                   <iframe width="400" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Victoria%20Medical%20Associates%2C%20Saskatoon&key=AIzaSyAv6LXdQyqxNUysRiuXGISoF8WjKgNWxgs"
-                        allowfullscreen over></iframe>
-                
-                   <iframe width="400" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Victoria%20Medical%20Associates%2C%20Saskatoon&key=AIzaSyAv6LXdQyqxNUysRiuXGISoF8WjKgNWxgs"
-                        allowfullscreen over></iframe>
-                        <iframe width="400" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Victoria%20Medical%20Associates%2C%20Saskatoon&key=AIzaSyAv6LXdQyqxNUysRiuXGISoF8WjKgNWxgs"
-                        allowfullscreen over></iframe>
-                    </div>
-            </div>
-        </div>
-        
-    </div>
+<h1 id="banner"><a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> Demo</h1>
+<div id="main">
+<p>Default submitHandler is set to display an alert into of submitting the form</p>
+<form class="cmxform" id="commentForm" method="get" action="">
+<fieldset>
+<legend>Please provide your name, email address (won't be published) and a comment</legend>
+<p>
+<label for="cname">Name (required, at least 2 characters)</label>
+<input id="cname" name="name" minlength="2" type="text" required>
+</p>
+<p>
+<label for="cemail">E-Mail (required)</label>
+<input id="cemail" type="email" name="email" required>
+</p>
+<p>
+<label for="curl">URL (optional)</label>
+<input id="curl" type= name="url">
+</p>
+<p>
+<label for="ccomment">Your comment (required)</label>
+<textarea id="ccomment" name="comment" required></textarea>
+</p>
+<input type="datetime-local">
 
+<p>
+<input class="submit" type="submit" value="Submit">
+</p>
+</fieldset>
+</form>
 
-    <div style='background:url(./public/img/appointmentpage.jpg)'>
-    <form action="">
-     <input type="checkbox" name="" id="" checked>date: 2018-02-21 time:09:00 <br>
-     <input type="checkbox" name="" id="">date: 2018-02-21 time:09:00
-     <input type="button" value='Delete' style="margin-right: 0mm;padding-right: 0mm">
-    <input type="email" name="" id="">
-    <input type="week" name="" id="">
-    </form>
-    </div>
-    <script>
-        $('form input[type=button]').click(function(){
-         console.log($("form input:checkbox:checked"));
-         alert(Date());
-        })
-        var d=new Date();
-        var n=d.toJSON();
-        console.log(n.substr(0,10),d.getDate(), new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate());
-         </script>
+</div>
 </body>
-
 </html>

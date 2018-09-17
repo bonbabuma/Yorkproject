@@ -8,6 +8,10 @@ block headComplement
   link(rel="stylesheet" type="text/css" href="/css1/jquery.my-modal.1.1.winStyle.css")
   script(src="/js1/appointment.js")
   script(type="text/javascript" src="/js1/jquery.my-modal.1.1.min.js")
+  script(src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js")
+  script(src="/js1/jquery.validate.js")
+ 
+
 
 block mainContent
  #hall_show.wrap
@@ -41,16 +45,8 @@ block mainContent
     .tab_content
       .tabs_item
         .entry-container-inner
-          form#new_entry.center.with-shadow(action="nextpage" method="post")
-            input(name="utf8", type="hidden", value="✓")
-            |
-            .form-header
-              .container-fluid
-                .row
-                  h1.form-title.col-md-12.font-family-heiti
-                  |                         
-                  .form-description.col-md-12
-            |<br>             
+          form#new_entry.center.with-shadow(action="" method="")
+
             .form-content.container-fluid
               .row
                 .fields.clearfix
@@ -61,7 +57,7 @@ block mainContent
                           | Full Name
                       |                                 
                       .field-content
-                        input#fullname(type="text", value="", name="")
+                        input#fullname(type="text", minlength="2", value="", name="fullname" required)
                   |                         
                   .field.field-radio-button.col-sm-12.required(data-api-code="field_2", data-type="RadioButton", data-label="性别", data-validations='["Presence"]')
                     .form-group
@@ -72,11 +68,11 @@ block mainContent
                       .field-content
                         .choices.font-family-heiti
                           label.radio.inline(onclick="")
-                            input.needsclick(type="radio", value="Male", name="gender")
+                            input.needsclick(type="radio", value="Male", name="gender" required)
                             |  Male
                           |                                         
                           label.radio.inline(onclick="")
-                            input.needsclick(type="radio", value="Female", name="gender")
+                            input.needsclick(type="radio", value="Female", name="gender" )
                             |  Female
                   |                         
                   .field.field-text-field.col-sm-12.required(data-api-code="field_3", data-type="TextField", data-label="健康卡", data-validations='["Presence"]')
@@ -86,16 +82,16 @@ block mainContent
                           | Healthcard Number
                       |                             
                       .field-content
-                        input#healthcard(type="text", name="")
+                        input#healthcard(type="password", name="healthcard", minlength='10',maxlength='10', required)
                   |                         
                   .field.field-text-field.col-sm-12.required(data-api-code="field_3", data-type="TextField", data-label="联系人", data-validations='["Presence"]')
                     .form-group
                       .field-label-container(onclick="")
                         label.field-label.font-family-heiti(for="contactNo")
-                          | Contact Number
+                          | Cellphone Number
                       |                                 
                       .field-content
-                        input#contactNo(type="text", name="")
+                        input#contactNo(type="tel", name="contactNo" required)
                   |                         
                   .field.field-mobile-field.col-sm-12.required(data-api-code="field_4", data-type="MobileField", data-label="手机", data-validations='["Presence","Format","VerificationTokenPresence"]')
                     .form-group
@@ -104,7 +100,7 @@ block mainContent
                           | Email
                       |                                 
                       .field-content
-                          input#email(type="email", name="")
+                          input#email(type="email", name="email" required)
                   |                         
                   .field.field-radio-button.col-sm-12(data-api-code="field_5", data-type="RadioButton", data-label="目标城市", data-validations="[]")
                     .form-group
@@ -149,7 +145,7 @@ block mainContent
                           | Clinic
                       |                                 
                       .field-content
-                        input#clinic(list="clinics" autocomplete="off")
+                        input#clinic(list="clinics" required autocomplete="off")
                         |                                     
                         datalist#clinics
                          each doc in documents
@@ -162,8 +158,7 @@ block mainContent
                           | Physician
                       |                                 
                       .field-content
-                        .field-content
-                          input#physician(list="physicians" autocomplete="off")
+                          input#physician(list="physicians" required autocomplete="off")
                           |                                             
                           datalist#physicians
                   |                         
@@ -173,16 +168,16 @@ block mainContent
                         label.field-label.font-family-heiti(for="date")
                           | Date
                         |                                     
-                        label.field-label(style="margin-left:140px", for="time") 
+                        label.field-label(style="margin-left:115px", for="time") 
                           | Time
                       |                                 
                       .field-content
-                        input#date(type="date", value="", name="")
+                        input#date(type="date", value="", name="date" required)
                         |                                     
-                        input#time(type="time", name="")
+                        input#time(type="time", name="time" required)
                   |<br>                     
                   .field.submit-field.col-md-12.text-center.clearfix
-                    input.submit.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="submit", name="commit", value="Book", data-disable-with="In process...")
+                    input.submit.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="submit", name="commit", value="Book it")
                     |                         
                     input.gd-btn.gd-btn-primary-solid.font-family-inherit.with-shadow(type="reset", name="clear", value="Clear", data-disable-with="In process...")
                     |                         
@@ -197,7 +192,6 @@ block mainContent
                     input#header(type="hidden", name="header")
                     |                         
                     input#background(type="hidden", name="background")
-
       // / tabs_item
       .tabs_item
         h4 Modify your appointment!
