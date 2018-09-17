@@ -233,5 +233,11 @@ schedule.scheduleJob(rule, function () {
   })
 })
 
-const port=3001;
-app.listen(port);
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log('listening on port 8000');
+});
