@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000
 
-
 var bodyParser = require('body-parser');//use body-parsing middleware to populate req.body.
 app.use(bodyParser.json())// for parsing application/json
   .use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -14,15 +13,23 @@ app.use(bodyParser.json())// for parsing application/json
   })
   .get('/comments', (req, res) => {
     res.render('comments');
-  })
+  })  
   .get('/newcomer', (req, res) => {
     res.render('newcomer');
   })
   .get('/cool', (req, res) => res.send(cool()))
+  .get('/times',(req,res)=>{
+    let result='';
+    const times=process.env.TIMES || 5
+    for(i=0;i<times;i++){
+      result+=i+' '
+    }
+    res.send(result)
+  })
   .listen(PORT, function (err) {
     if (err) {
       console.log(err);
       return;
     }
     console.log('listening on port ' + PORT);
-  });
+  })
