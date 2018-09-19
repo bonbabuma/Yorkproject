@@ -6,6 +6,11 @@ const PORT = process.env.PORT || 5000
 var bodyParser = require('body-parser');//use body-parsing middleware to populate req.body.
 
 const mongodb=require('mongodb');
+var MongoClient = require('mongodb').MongoClient;   //官方推荐的连接方式。
+const ObjectID = require('mongodb').ObjectID;
+//const url = 'mongodb://localhost:27017';
+let uri = 'mongodb://york1:comit2018@ds163402.mlab.com:63402/yorkproject';
+
 
 let seedData = [
   {
@@ -30,8 +35,7 @@ let seedData = [
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
 
-let uri = 'mongodb://york:19840219lluuyY@ds261342.mlab.com:61342/yorkproject';
-mongodb.MongoClient.connect(uri, function(err, client) {
+MongoClient.connect(uri, function(err, client) {
 
   if(err) throw err;
 
@@ -98,7 +102,6 @@ mongodb.MongoClient.connect(uri, function(err, client) {
 });
 
 
-
 app.use(bodyParser.json())// for parsing application/json
   .use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
   .use(express.static('public'))
@@ -110,7 +113,14 @@ app.use(bodyParser.json())// for parsing application/json
     res.render('comments');
   })  
   .get('/newcomer', (req, res) => {
-    res.render('newcomer');
+    MongoClient.connect(uri, function(err, client) {
+      if(err) throw err;
+      let db = client.db('yorkproject')
+      let songs = db.collection('songs');
+    songs.findOne({"decade":'1970s'}, function (error, doc) {
+    res.render('newcomer',{documents:doc});
+    })
+   })
   })
   .get('/cool', (req, res) => res.send(cool()))
   .get('/times',(req,res)=>{
