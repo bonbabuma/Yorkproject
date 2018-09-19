@@ -1,81 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>jQuery validation plug-in - main demo</title>
-<link rel="stylesheet" href="css/screen.css">
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
-<script src="public/js1/jquery.validate.js"></script>
-<script>
-	$.validator.setDefaults({
-		submitHandler: function() {
-			alert("submitted!");
-		}
-	});
+	<meta charset="utf-8">
+	<title>jQuery validation plug-in - main demo</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script src="public/js1/jquery.validate.js"></script>
+	<script>
+		$.validator.setDefaults({
+			submitHandler: function () {
+				alert("submitted!");
+			}
+		});
 
-	$().ready(function() {
-		// validate the comment form when it is submitted
-		$("#commentForm").validate();
+		$().ready(function () {
+			// validate the comment form when it is submitted
+			$("#commentForm").validate();
 
-	});
+		});
 	</script>
-<style>
-	#commentForm {
-		width: 500px;
-	}
-	#commentForm label {
-		width: 250px;
-	}
-	#commentForm label.error, #commentForm input.submit {
-		margin-left: 253px;
-	}
-	#signupForm {
-		width: 670px;
-	}
-	#signupForm label.error {
-		margin-left: 10px;
-		width: auto;
-		display: inline;
-	}
-	#newsletter_topics label.error {
-		display: none;
-		margin-left: 103px;
-	}
+	<style>
+		#commentForm {
+			width: 500px;
+		}
+
+		#commentForm label {
+			width: 250px;
+		}
+
+		#commentForm label.error,
+		#commentForm input.submit {
+			margin-left: 253px;
+		}
+
+		#signupForm {
+			width: 670px;
+		}
+
+		#signupForm label.error {
+			margin-left: 10px;
+			width: auto;
+			display: inline;
+		}
+
+		#newsletter_topics label.error {
+			display: none;
+			margin-left: 103px;
+		}
 	</style>
 </head>
+
 <body>
-<h1 id="banner"><a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> Demo</h1>
-<div id="main">
-<p>Default submitHandler is set to display an alert into of submitting the form</p>
-<form class="cmxform" id="commentForm" method="get" action="">
-<fieldset>
-<legend>Please provide your name, email address (won't be published) and a comment</legend>
-<p>
-<label for="cname">Name (required, at least 2 characters)</label>
-<input id="cname" name="name" minlength="2" type="text" required>
-</p>
-<p>
-<label for="cemail">E-Mail (required)</label>
-<input id="cemail" type="email" name="email" required>
-</p>
-<p>
-<label for="curl">URL (optional)</label>
-<input id="curl" type= name="url">
-</p>
-<p>
-  <label for="ccomment">Your comment (required)</label>
-<textarea id="ccomment" name="comment" required></textarea>
-</p>
-<input type="datetime-local">
+	<h1 id="banner"><a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> Demo</h1>
+	<div id="main">
+		<p>Default submitHandler is set to display an alert into of submitting the form</p>
+		<form class="cmxform" id="commentForm" method="get" action="">
+			<fieldset>
+				<legend>Please provide your name, email address (won't be published) and a comment</legend>
+				<p>
+					<label for="cname">Name (required, at least 2 characters)</label>
+					<input id="cname" name="name" minlength="2" type="text" required>
+				</p>
+				<p>
+					<label for="cemail">E-Mail (required)</label>
+					<input id="cemail" type="email" name="email" required>
+				</p>
+				<p>
+					<label for="curl">URL (optional)</label>
+					<input id="curl" type=n ame="url">
+				</p>
+				<p>
+					<label for="ccomment">Your comment (required)</label>
+					<textarea id="ccomment" name="comment" required></textarea>
+				</p>
+				<input type="datetime-local">
 
-<p>
-<input class="submit" type="submit" value="Submit">
-</p>
-</fieldset>
-</form>
+				<p>
+					<input class="submit" type="submit" value="Submit">
+				</p>
+			</fieldset>
+		</form>
 
-</div>
+	</div>
 </body>
+
 </html>
