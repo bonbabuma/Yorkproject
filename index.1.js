@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 5000
 
 var bodyParser = require('body-parser');//use body-parsing middleware to populate req.body.
 
-const mongodb=require('mongodb');
 var MongoClient = require('mongodb').MongoClient;   //官方推荐的连接方式。
 const ObjectID = require('mongodb').ObjectID;
 //const url = 'mongodb://localhost:27017';
@@ -122,6 +121,60 @@ app.use(bodyParser.json())// for parsing application/json
     })
    })
   })
+  .get('/', (req, res) => {
+    MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+      const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
+      const collection = db.collection('basicInfo');
+      collection.find({}).toArray((error, doc) => {
+        // console.log(doc.length);
+        if (error){
+          throw error;
+        }
+        else{
+          res.render('index', { documents: doc })
+        };
+        //callback(doc);  //回应callback is not defined.
+        client.close();//As we opened a connection to the MongoDB we need to close it if we're not using it
+      });
+    })
+  })
+  .get('/appointment', (req, res, next) => {
+    MongoClient.connect(uri, function (err, client) {
+      const db = client.db('yorkproject');
+      const collection = db.collection('clinicInfo');
+      collection.find({}).toArray((error, doc) => {
+        res.render('appointment', { documents: doc });
+      })
+    })
+  })
+  .get('/clinicInfo', (req, res) => {
+    res.render('clinicInfo');
+  })
+  .get('/database', (req, res) => {
+    let a = req.query;
+    MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+      const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
+      const collection = db.collection('clinicInfo');
+      const collectionBasicInfo = db.collection("basicInfo");
+  
+      if (a.searchKey === "" && a.search === undefined) {
+        collection.find({}).toArray(function (error, doc) {
+          //  console.log(doc[0].address);
+          res.json(doc);
+          client.close();
+        })
+      } else if (a.searchKey !== "" && a.search === undefined) {
+        collection.find({ "$or": [{ "clinic": a.searchKey }, { "community": a.searchKey }] }).toArray(function (error, doc) {
+          //  console.log(doc[0].address);
+          res.json(doc);
+        })
+      } else {
+        collectionBasicInfo.findOne({ "name": a.search }, function (error, doc) {
+          res.json(doc);
+        })
+      }
+    })
+  })
   .get('/cool', (req, res) => res.send(cool()))
   .get('/times',(req,res)=>{
     let result='';
@@ -130,6 +183,71 @@ app.use(bodyParser.json())// for parsing application/json
       result+=i+' '
     }
     res.send(result)
+  })
+  .post('/searchPhysician', (req, res) => {
+    let a = req.body;
+    console.log(a,111);
+    if(a.name===""){
+      delete a.name;
+    };
+    if(a.languages===""){
+      delete a.languages;
+    }
+    if(a.specialty===""){
+      delete a.specialty;
+    }
+    console.log(a,222);  
+    MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+      const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
+      const collection = db.collection("basicInfo"); 
+      collection.find(a).toArray((err, result) => {
+        if (err) console.log(error);
+        else res.json(result);
+      });
+    })
+  })
+  .post('/database', (req, res, next) => {
+    let a = req.body;
+    console.log(a);
+    MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+      const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
+      const collectionAppointment = db.collection('appointment');
+      const collectionClinic = db.collection('clinicInfo');
+      if (a.fullname === undefined) {  //fill the droplist in 'Book appointment' with physicianList according to selected clinic
+        collectionClinic.findOne(a, (err, result) => {
+          //console.log(result.physicianList);
+          res.json(result.physicianList);
+        });
+      } else {
+        collectionAppointment.insertOne(a, (err, result) => {
+          res.json(result.ops[0]);
+        });
+      }
+    })
+  })
+  .post('/cancelAppointment', (req, res, next) => {
+    let a = req.body;
+    console.log(a,'CANCEL APPOINTMENT');
+    MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+      const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
+      const collectionAppointment = db.collection('appointment');
+      if (a.fullname !== '' && a._id === undefined) {
+        collectionAppointment.find(a).toArray(function (error, doc) {
+          res.json(doc);
+        })
+      } else{
+        let successRecords=[];
+        let errOcurr=0;
+        a._id.forEach(function (value) {
+          collectionAppointment.deleteOne({ "_id": ObjectID(value) }, function (err, result) {
+            if(err!==null){errOcurr+=1};
+          });        
+          if(errOcurr!==1){
+          successRecords.push(value);}
+        })
+        res.json({"successRecords":successRecords,"errOcurr":errOcurr})
+      }
+    })
   })
   .listen(PORT, function (err) {
     if (err) {
