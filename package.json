@@ -2,10 +2,10 @@
   "name": "project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.2.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node index.2.js",
+    "start": "node index.js",
     "sass:compile": "node-sass --include-path sass --watch INPUT_FILE.scss OUTPUT_FILE.css"
   },
   "keywords": [],
