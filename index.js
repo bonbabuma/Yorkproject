@@ -9,12 +9,14 @@ app.set('view engine', 'pug');
 
 var MongoClient = require('mongodb').MongoClient;   //官方推荐的连接方式。
 const ObjectID = require('mongodb').ObjectID;
-const url = 'mongodb://localhost:27017';   //We know that by default MongoDB uses port 27017 and we have it installed in our local environment
+//const url = 'mongodb://localhost:27017';   //We know that by default MongoDB uses port 27017 and we have it installed in our local environment
+let uri = 'mongodb://york1:comit2018@ds163402.mlab.com:63402/yorkproject';
+
 
 //used by the page of Physician List
 app.get('/', (req, res) => {
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('basicInfo');
     collection.find({}).toArray((error, doc) => {
       // console.log(doc.length);
@@ -44,8 +46,8 @@ app.post('/searchPhysician', (req, res) => {
     delete a.specialty;
   }
   console.log(a,222);  
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
     const collection = db.collection("basicInfo"); 
     collection.find(a).toArray((err, result) => {
       if (err) console.log(error);
@@ -57,8 +59,8 @@ app.post('/searchPhysician', (req, res) => {
 //fetch the data for 'Physician List' and '/Clinic Information'
 app.get('/database', (req, res) => {
   let a = req.query;
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
     const collection = db.collection('clinicInfo');
     const collectionBasicInfo = db.collection("basicInfo");
 
@@ -85,8 +87,8 @@ app.get('/database', (req, res) => {
 app.post('/database', (req, res, next) => {
   let a = req.body;
   console.log(a);
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
     const collectionAppointment = db.collection('appointment');
     const collectionClinic = db.collection('clinicInfo');
     if (a.fullname === undefined) {  //fill the droplist in 'Book appointment' with physicianList according to selected clinic
@@ -106,8 +108,8 @@ app.post('/database', (req, res, next) => {
 app.post('/cancelAppointment', (req, res, next) => {
   let a = req.body;
   console.log(a,'CANCEL APPOINTMENT');
-  MongoClient.connect(url, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
-    const db = client.db('physicians');//The client object has a db method that accepts a string with the database name
+  MongoClient.connect(uri, function (err, client) {//MongoClient has a connect method that allows us to connect to MongoDB using Node.js
+    const db = client.db('yorkproject');//The client object has a db method that accepts a string with the database name
     const collectionAppointment = db.collection('appointment');
     if (a.fullname !== '' && a._id === undefined) {
       collectionAppointment.find(a).toArray(function (error, doc) {
@@ -129,8 +131,8 @@ app.post('/cancelAppointment', (req, res, next) => {
 })
 
 app.get('/appointment', (req, res, next) => {
-  MongoClient.connect(url, function (err, client) {
-    const db = client.db('physicians');
+  MongoClient.connect(uri, function (err, client) {
+    const db = client.db('yorkproject');
     const collection = db.collection('clinicInfo');
     collection.find({}).toArray((error, doc) => {
       res.render('appointment', { documents: doc });
@@ -195,8 +197,8 @@ rule.dayOfWeek = [new schedule.Range(0, 6)];
 rule.hour = 18;
 rule.minute = 08;
 schedule.scheduleJob(rule, function () {
-   MongoClient.connect(url, function (err, client) {
-    const db = client.db('physicians');
+   MongoClient.connect(uri, function (err, client) {
+    const db = client.db('yorkproject');
     const collection = db.collection('appointment');
     collection.find({"date":new Date().toJSON().substr(0,10)}).toArray((error, doc) => { //select the record including appointment in tomorrow.
     //  console.log(doc[0],11111);

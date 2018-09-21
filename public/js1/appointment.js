@@ -1,4 +1,3 @@
-
 window.onload = function () {
     let subNavA = $('#subNav a');
     subNavA.each(function (index, element) {  //highlight the area of navigation bar
