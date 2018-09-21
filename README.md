@@ -2,7 +2,7 @@
 
 * This project is for my ComIT class held in Saskatoon from Jun to Sep of 2018.
 * It's designed for residents of Saskatoon to browse, book/modify/cancel appointment with and evaluate the family physicians.
-* It's deployed in Heroku with support of mLab for mongoDB, http://immense-badlands-64622.herokuapp.com/
+* It's deployed in Heroku with support of mLab for mongoDB, https://immense-badlands-64622.herokuapp.com/
 ![img](public/snapshot/structure1.png)
 * In PHYSICIAN LIST page, you can browse the profile of physicians and jump to his/her clinic page. You can also book appointment if you think the physician is suitable for your condition, the name of such physician and clinic will be filled in appointment form automatically.
 ![img](public/snapshot/PhysicianList.png)
