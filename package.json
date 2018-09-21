@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node index.1.js",
+    "start": "node index.2.js",
     "sass:compile": "node-sass --include-path sass --watch INPUT_FILE.scss OUTPUT_FILE.css"
   },
   "keywords": [],
