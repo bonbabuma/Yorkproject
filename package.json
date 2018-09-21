@@ -2,7 +2,7 @@
   "name": "project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.2.js",
   "scripts": {
     "test": "mocha",
     "start": "node index.2.js",
